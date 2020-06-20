@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand ml-3" href="#">Inicio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse mr-4" id="navbarNav">
+        <ul class="navbar-nav ml-3 ml-auto">
+            <li class="nav-item mr-3">
+                <a class="nav-link" href="#" [routerLink]="['/animales']" [routerLinkActive]="['activado']">Animales</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['/home']">Provincias</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['/home']">Perros</a>
+            </li>
+            <li class="nav-item mr-3">
+                <a class="nav-link" href="#" [routerLink]="['/home']">Gatos</a>
+            </li>
+            <li class="nav-item mr-3">
+                <a class="nav-link" href="#" [routerLink]="['/crear-animal']" [routerLinkActive]="['activado']">Añadir animal</a>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-info" [routerLink]="['/login']">Entrar</button>
+            </li>
+        </ul>
+    </div>
+</nav>
