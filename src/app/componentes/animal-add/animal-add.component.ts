@@ -12,6 +12,8 @@ import { GLOBAL } from 'src/app/servicios/global';
 })
 export class AnimalAddComponent implements OnInit {
   public animal: Animal;
+  public filesToUpload;
+  public resultUpload;
 
   constructor(
     private _animalService: AnimalService,
@@ -26,6 +28,23 @@ export class AnimalAddComponent implements OnInit {
   }
 
   onSubmit() {
+
+    if (this.filesToUpload && this.filesToUpload.length >= 1) {
+      this._animalService.makeFileRequest(GLOBAL.url + 'upload-file', [], this.filesToUpload).then((result) => {
+        console.log(result);
+        this.resultUpload = result;
+        this.animal.imagen = this.resultUpload.filename;
+        this.saveAnimal();
+
+      }, (error) => {
+        console.log(error);
+      });
+    } else {
+      this.saveAnimal();
+    }
+  }
+
+  saveAnimal(){
     this._animalService.addAnimal(this.animal).subscribe(
       response => {
         if(response['code'] == 200){
@@ -38,5 +57,10 @@ export class AnimalAddComponent implements OnInit {
         console.log(<any>error);
       }
     );
+  }
+
+  fileChangeEvent(fileInput: any) {
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+    console.log(this.filesToUpload);
   }
 }

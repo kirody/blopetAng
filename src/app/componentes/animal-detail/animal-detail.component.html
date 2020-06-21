@@ -1,0 +1,30 @@
+<div class="container mt-5 mb-5">
+    <div *ngIf="!animal">
+        <p>No se encuentra el animal</p>
+    </div>
+
+    <div *ngIf="animal">
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-5" *ngIf="animal.imagen">
+                <img src="http://localhost:8080/Angular/blopet/uploads/{{animal.imagen}}" class="img-thumbnail shadow p-3 mb-5 bg-white roundeds"
+                    alt="...">
+            </div>
+            <div class="col-sm-6 ficha border shadow p-3 mb-5 bg-white rounded">
+                <ul class="list-group list-group-flush">
+                    <div class="row pl-3 pb-3">
+                        <img src="../../../assets/icons/icon-clipboard.png" style="width: 45px;" alt="..." class="d-flex flex-column-reverse">
+                        <span class="titulo">Ficha del animal</span>
+                    </div>
+                    <li class="list-group-item text-capitalize"> <strong>Nombre:</strong> {{animal.nombre}}</li>
+                    <li class="list-group-item text-capitalize"> <strong>Edad:</strong> {{animal.edad}}</li>
+                    <li class="list-group-item text-capitalize"> <strong>Tamaño:</strong> {{animal.tamanio}}</li>
+                    <li class="list-group-item text-capitalize"> <strong>Sexo:</strong> {{animal.sexo}}</li>
+                    <li class="list-group-item text-capitalize"> <strong>Vacunas:</strong> {{animal.vacunas}}</li>
+                    <li class="list-group-item text-capitalize"> <strong>Descripción:</strong> {{animal.descripcion}}</li>
+                    <li class="list-group-item text-capitalize"> <strong>Raza:</strong> {{animal.descripcion}}</li>
+                    <li class="list-group-item text-capitalize"> <strong>Provincia:</strong> {{animal.descripcion}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

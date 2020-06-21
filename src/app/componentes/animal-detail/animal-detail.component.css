@@ -1,0 +1,16 @@
+.img-thumbnail {
+    padding: 1rem;
+}
+
+.ficha{
+    width: 90%;
+}
+
+.titulo{
+    font-size: 28px;
+    margin: 0;
+}
+
+.icono{
+    padding: 0;
+}

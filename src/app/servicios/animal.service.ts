@@ -21,11 +21,51 @@ export class AnimalService {
       return this.httpClient.get(this.url+'animales');
    }
 
+   getAnimal(id){
+    return this.httpClient.get(this.url+'animal/'+id);
+  }
+
    addAnimal(animal: Animal): Observable<any>{
     let json = JSON.stringify(animal);
     let params = 'json='+json;
     let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
 
     return this.httpClient.post(this.url+'animales', params, {headers: headers});
+  }
+
+  editAnimal(id, animal: Animal): Observable<any>{
+    let json = JSON.stringify(animal);
+    let params = 'json='+json;
+    let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+
+    return this.httpClient.post(this.url+'update-animal/'+id, params, {headers: headers});
+ }
+
+  deleteAnimal(id){
+    return this.httpClient.get(this.url+'delete-animal/'+id);
+ }
+
+  makeFileRequest(url: string, params: Array<string>, files: Array<File>){
+    return new Promise((resolve, reject) => {
+       var formData: any = new FormData();
+       var xhr = new XMLHttpRequest();
+
+       for(var i = 0; i < files.length; i++){
+           formData.append('uploads[]', files[i], files[i].name);
+       }
+
+       xhr.onreadystatechange = function(){
+           if(xhr.readyState == 4){
+             if(xhr.status == 200){
+                 resolve(JSON.parse(xhr.response));
+             }else{
+                 reject(xhr.response);
+             }
+           }
+       };
+
+       xhr.open("POST", url, true);
+       xhr.send(formData);
+    });
   }
 }

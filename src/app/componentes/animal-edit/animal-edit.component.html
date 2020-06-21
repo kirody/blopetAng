@@ -1,9 +1,9 @@
 <div class="container border shadow p-3 mb-5 bg-white rounded">
-    <h3 class="mt-3">Añade un animal</h3>
+    <h3 class="mt-3">Editar este animal</h3>
     <form #formAnimal="ngForm" (ngSubmit)="onSubmit()" id="form-animal">
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="">
+                <label>
                     Nombre*
                     <span *ngIf="!nombre.valid && nombre.touched" class="badge badge-danger">Este campo es
                         obligatorio</span>
@@ -12,7 +12,7 @@
                     required id="">
             </div>
             <div class="form-group col-md-6">
-                <label for="">
+                <label>
                     Edad*
                     <span *ngIf="!edad.valid && edad.touched" class="badge badge-danger">Este campo no es
                         correcto</span>
@@ -21,7 +21,7 @@
                     pattern="[0-9]+" maxlength="2" id="">
             </div>
             <div class="form-group col-md-6">
-                <label for="">
+                <label>
                     Tamaño*
                     <span *ngIf="!tamanio.valid && tamanio.touched" class="badge badge-danger">Este campo es
                         obligatorio</span>
@@ -30,7 +30,7 @@
                     required id="">
             </div>
             <div class="form-group col-md-6">
-                <label for="">
+                <label>
                     Sexo*
                     <span *ngIf="!sexo.valid && sexo.touched" class="badge badge-danger">Este campo es
                         obligatorio</span>
@@ -39,20 +39,20 @@
                     id="">
             </div>
             <div class="form-group col-md-6">
-                <label for="">Vacunas</label>
+                <label>Vacunas</label>
                 <input type="text" #vacunas="ngModel" name="vacunas" [(ngModel)]="animal.vacunas" class="form-control"
                     id="">
             </div>
             <!--<div class="form-group col-md-6">
-                <label for="">Raza</label>
+                <label>Raza</label>
                 <input type="text" #raza="ngModel" name="raza" [(ngModel)]="animal.raza" class="form-control" id="">
             </div>
             <div class="form-group col-md-6">
-                <label for="">Provincia</label>
+                <label>Provincia</label>
                 <input type="text" #provincia="ngModel" name="provincia" [(ngModel)]="animal.provincia" class="form-control" id="">
             </div>-->
             <div class="form-group col-md-6">
-                <label for="">
+                <label>
                     Descripción*
                     <span *ngIf="!descripcion.valid && descripcion.touched" class="badge badge-danger">Este campo es
                         obligatorio</span>
@@ -61,10 +61,14 @@
                     class="form-control" required id=""></textarea>
             </div>
             <div class="form-group col-md-6">
-                <label for="">Imagen</label>
+                <label>Imagen</label>
+                <div *ngIf=is_edit>
+                    <img src="http://localhost:8080/Angular/blopet/uploads/{{animal.imagen}}"
+                        class="animal_imagen img-fluid pt-2 pr-4 pb-3" alt="...">
+                </div>
                 <input type="file" class="form-control" (change)="fileChangeEvent($event)">
             </div>
         </div>
-        <button type="submit" [disabled]="!formAnimal.form.valid" class="btn btn-info mt-2 mb-5">Añadir</button>
+        <button type="submit" [disabled]="!formAnimal.form.valid" class="btn btn-info mt-2 mb-5">Modificar</button>
     </form>
 </div>

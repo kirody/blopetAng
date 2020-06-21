@@ -15,3 +15,7 @@ form{
 input, textarea{
     width: 95%;
 }
+
+.animal_imagen{
+    width: 30%;
+}

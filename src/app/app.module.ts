@@ -14,9 +14,13 @@ import { MenuComponent } from './componentes/menu/menu.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { AnimalesListadoComponent } from './componentes/animales-listado/animales-listado.component';
 import { AnimalAddComponent } from './componentes/animal-add/animal-add.component';
+import { AnimalDetailComponent } from './componentes/animal-detail/animal-detail.component';
+import { AnimalEditComponent } from './componentes/animal-edit/animal-edit.component';
 
 //Servicios
 import { AnimalService } from 'src/app/servicios/animal.service';
+
+
 
 
 @NgModule({
@@ -28,7 +32,9 @@ import { AnimalService } from 'src/app/servicios/animal.service';
     MenuComponent,
     HomeComponent,
     AnimalesListadoComponent,
-    AnimalAddComponent
+    AnimalAddComponent,
+    AnimalDetailComponent,
+    AnimalEditComponent
   ],
   imports: [
     BrowserModule,
