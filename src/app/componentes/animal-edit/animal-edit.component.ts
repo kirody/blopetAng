@@ -21,7 +21,7 @@ export class AnimalEditComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router
   ) {
-    this.animal = new Animal(0,'',0,'','','','','');
+    this.animal = new Animal(0,'','','','','','','','','','');
     this.is_edit = true;
   }
 

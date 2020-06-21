@@ -15,12 +15,19 @@ export class AnimalAddComponent implements OnInit {
   public filesToUpload;
   public resultUpload;
 
+  tipoSeleccionado: number = 0;
+  tiposRaza = [
+    {id: 1, nomRaza: "Perro"},
+    {id: 2, nomRaza: "Gato"}
+  ];
+
+
   constructor(
     private _animalService: AnimalService,
     private _route: ActivatedRoute,
     private _router: Router
   ) {
-    this.animal = new Animal(0,'',0,'','','','','');
+    this.animal = new Animal(0,'','','','','','','','','','');
   }
 
   ngOnInit(): void {

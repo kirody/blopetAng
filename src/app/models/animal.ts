@@ -2,11 +2,14 @@ export class Animal{
     constructor(
         public id: number,
         public nombre: string,
-        public edad: number,
+        public edad: string,
         public tamanio: string,
         public sexo: string,
         public vacunas: string,
         public descripcion: string,
+        public provincia: string,
+        public tipo: string,
+        public raza: string,
         public imagen: string
     ){}
 }
