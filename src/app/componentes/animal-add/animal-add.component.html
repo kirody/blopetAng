@@ -110,7 +110,7 @@
             <div class="form-group col-md-6">
                 <label for="">Tipo de animal doméstico</label>
                 <select #tipo="ngModel" name="tipo" [(ngModel)]="tipoSeleccionado" [(ngModel)]="animal.tipo" class="form-control">
-                    <option selected value="">--Seleccione una raza</option>
+                    <option selected value="">--Selecciona una raza</option>
                     <option *ngFor="let type of tiposRaza" [value]=type.id>
                         {{type.nomRaza}}
                     </option>
@@ -120,9 +120,7 @@
                 <label for="">Raza</label>
                 <div *ngIf="tipoSeleccionado == 0">
                     <select #raza="ngModel" name="raza" [(ngModel)]="animal.raza" class="form-control" disabled>
-                        <option value="" selected>--Seleccione un tipo animal doméstico</option>
-                        <option></option>
-                        <option></option>
+                        <option value="" selected>--Selecciona un tipo animal doméstico</option>
                     </select>
                 </div>
                 <div *ngIf="tipoSeleccionado == 1">
