@@ -3,30 +3,25 @@
     <form #formAnimal="ngForm" (ngSubmit)="onSubmit()" id="form-animal">
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="">
+                <label>
                     Nombre*
                     <span *ngIf="!nombre.valid && nombre.touched" class="badge badge-danger">Este campo es
                         obligatorio</span>
                 </label>
                 <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="animal.nombre" class="form-control"
-                    required id="">
+                    required>
             </div>
             <div class="form-group col-md-6">
-                <label for="">
+                <label>
                     Edad*
                     <span *ngIf="!edad.valid && edad.touched" class="badge badge-danger">Este campo no es
                         correcto</span>
                 </label>
                 <select #edad="ngModel" name="edad" [(ngModel)]="animal.edad" class="form-control">
-                    <option>De 1 a 3 meses</option>
-                    <option>De 3 a 6 meses</option>
-                    <option>De 9 a 12 meses</option>
-                    <option>De 1 a 3 años</option>
-                    <option>De 3 a 6 años</option>
-                    <option>De 6 a 9 años</option>
-                    <option>De 9 a 12 años</option>
-                    <option>De 12 a 15 años</option>
-                    <option>De 15 a 18 años</option>
+                    <option selected value="">--Selecciona una opción</option>
+                    <option *ngFor="let edad of edades">
+                        {{edad.nomEdad}}
+                    </option>
                 </select>
             </div>
             <div class="form-group col-md-6">
@@ -36,11 +31,10 @@
                         obligatorio</span>
                 </label>
                 <select #tamanio="ngModel" name="tamanio" [(ngModel)]="animal.tamanio" class="form-control">
-                    <option>Muy pequeño (Menos de 4 kilos)</option>
-                    <option>Pequeño (Hasta 10 kilos)</option>
-                    <option>Mediano (Entre 11 y 25 kilos)</option>
-                    <option>Grande (Entre 26 y 44 kilos)</option>
-                    <option>Muy grande (Más de 45 kilos)</option>
+                    <option selected value="">--Selecciona una opción</option>
+                    <option *ngFor="let tam of tamanios">
+                        {{tam.nomTamanio}}
+                    </option>
                 </select>
             </div>
             <div class="form-group col-md-6">
@@ -50,88 +44,50 @@
                         obligatorio</span>
                 </label>
                 <select #sexo="ngModel" name="sexo" [(ngModel)]="animal.sexo" class="form-control" required>
-                    <option selected>--Seleccione una opción</option>
-                    <option>Hembra</option>
-                    <option>Macho</option>
+                    <option selected value="">--Selecciona una opción</option>
+                    <option *ngFor="let sex of sexos">
+                        {{sex.nomSexo}}
                 </select>
             </div>
             <div class="form-group col-md-6">
                 <label>Vacunas</label>
-                <input type="text" #vacunas="ngModel" name="vacunas" [(ngModel)]="animal.vacunas" class="form-control">
+                <input type="text" #vacunas="ngModel" name="vacunas" [(ngModel)]="animal.vacunas" class="form-control" placeholder="Enumeralas brevemente">
             </div>
             <div class="form-group col-md-6">
-                <label>Selecciona una provincia</label>
-                <select #provincia="ngModel" name="provincia" [(ngModel)]="animal.provincia" class="form-control">
-                    <option>Álava</option>
-                    <option>Albacete</option>
-                    <option>Alicante</option>
-                    <option>Almería</option>
-                    <option>Asturias</option>
-                    <option>Ávila</option>
-                    <option>Badajoz</option>
-                    <option>Barcelona</option>
-                    <option>Burgos</option>
-                    <option>Cáceres</option>
-                    <option>Cádiz</option>
-                    <option>Cantabria</option>
-                    <option>Castellón</option>
-                    <option>Ceuta</option>
-                    <option>Ciudad Real</option>
-                    <option>Córdoba</option>
-                    <option>Cuenca</option>
-                    <option>Girona</option>
-                    <option>Las Palmas</option>
-                    <option>Granada</option>
-                    <option>Guadalajara</option>
-                    <option>Guipúzcoa</option>
-                    <option>Huelva</option>
-                    <option>Huesca</option>
-                    <option>Islas Baleares</option>
-                    <option>Jaén</option>
-                    <option>Acoruña</option>
-                    <option>La Rioja</option>
-                    <option>León</option>
-                    <option>Lleida</option>
-                    <option>Lugo</option>
-                    <option>Madrid</option>
-                    <option>Málaga</option>
-                    <option>Melilla</option>
-                    <option>Murcia</option>
-                    <option>Navarra</option>
-                    <option>Ourense</option>
-                    <option>Palencia</option>
-                    <option>Pontevedra</option>
-                    <option>Salamanca</option>
-                    <option>Segovia</option>
-                    <option>Sevilla</option>
-                    <option>Soria</option>
-                </select>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="">Tipo de animal doméstico</label>
-                <select #tipo="ngModel" name="tipo" [(ngModel)]="tipoSeleccionado" [(ngModel)]="animal.tipo" class="form-control">
-                    <option selected value="">--Selecciona una raza</option>
-                    <option *ngFor="let type of tiposRaza" [value]=type.id>
-                        {{type.nomRaza}}
+                <label>Selecciona una provincia*</label>
+                <select #provincia="ngModel" name="provincia" [(ngModel)]="animal.provincia" class="form-control" required>
+                    <option selected value="">--Selecciona una opción</option>
+                    <option *ngFor="let prov of provincias">
+                        {{prov.nomProvincia}}
                     </option>
                 </select>
             </div>
             <div class="form-group col-md-6">
-                <label for="">Raza</label>
+                <label>Tipo de animal doméstico*</label>
+                <select #tipo="ngModel" name="tipo" [(ngModel)]="tipoSeleccionado" [(ngModel)]="animal.tipo" class="form-control" required>
+                    <option selected value="">--Selecciona una opción</option>
+                    <option *ngFor="let type of tipoAnimal" [value]=type.id>
+                        {{type.nomTipo}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Raza*</label>
                 <div *ngIf="tipoSeleccionado == 0">
                     <select #raza="ngModel" name="raza" [(ngModel)]="animal.raza" class="form-control" disabled>
                         <option value="" selected>--Selecciona un tipo animal doméstico</option>
                     </select>
                 </div>
                 <div *ngIf="tipoSeleccionado == 1">
-                    <select #raza="ngModel" name="raza" [(ngModel)]="animal.raza" class="form-control">
+                    <select #raza="ngModel" name="raza" [(ngModel)]="animal.raza" class="form-control" required>
                         <option value="" selected>--Selecciona una raza de perro</option>
-                        <option>Chihuahua</option>
-                        <option>3</option>
+                        <option *ngFor="let razPe of razasPerro">
+                            {{razPe.nomRaza}}
+                        </option>
                     </select>
                 </div>
                 <div *ngIf="tipoSeleccionado == 2">
-                    <select #raza="ngModel" name="raza" [(ngModel)]="animal.raza" class="form-control">
+                    <select #raza="ngModel" name="raza" [(ngModel)]="animal.raza" class="form-control" required>
                         <option value="" selected>--Selecciona una raza de gato</option>
                         <option>Siamés</option>
                         <option>3</option>
@@ -139,17 +95,17 @@
                 </div>
             </div>
             <div class="form-group col-md-6">
-                <label for="">
+                <label>
                     Descripción*
                     <span *ngIf="!descripcion.valid && descripcion.touched" class="badge badge-danger">Este campo es
                         obligatorio</span>
                 </label>
                 <textarea #descripcion="ngModel" name="descripcion" [(ngModel)]="animal.descripcion"
-                    class="form-control" required id=""></textarea>
+                    class="form-control" required placeholder="Escribe algo..."></textarea>
             </div>
             <div class="form-group col-md-6">
-                <label for="">Imagen</label>
-                <input type="file" class="form-control" (change)="fileChangeEvent($event)">
+                <label>Imagen*</label>
+                <input type="file" class="form-control" (change)="fileChangeEvent($event)" required>
             </div>
         </div>
         <button type="submit" [disabled]="!formAnimal.form.valid" class="btn btn-info mt-2 mb-5">Añadir</button>

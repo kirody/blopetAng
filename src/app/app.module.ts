@@ -19,6 +19,7 @@ import { AnimalEditComponent } from './componentes/animal-edit/animal-edit.compo
 
 //Servicios
 import { AnimalService } from 'src/app/servicios/animal.service';
+import { RegisterComponent } from './componentes/user/register/register.component';
 
 
 
@@ -34,7 +35,8 @@ import { AnimalService } from 'src/app/servicios/animal.service';
     AnimalesListadoComponent,
     AnimalAddComponent,
     AnimalDetailComponent,
-    AnimalEditComponent
+    AnimalEditComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
