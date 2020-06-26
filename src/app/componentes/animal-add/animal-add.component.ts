@@ -60,7 +60,6 @@ export class AnimalAddComponent implements OnInit {
   }
 
   onSubmit() {
-
     if (this.filesToUpload && this.filesToUpload.length >= 1) {
       this._animalService.makeFileRequest(GLOBAL.url + 'upload-file', [], this.filesToUpload).then((result) => {
         console.log(result);

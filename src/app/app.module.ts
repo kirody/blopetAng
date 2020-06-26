@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 //Componentes
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './componentes/principal/principal.component';
-import { LoginComponent } from './componentes/login/login.component';
+import { LoginComponent } from './componentes/user/login/login.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { MenuComponent } from './componentes/menu/menu.component';
 import { HomeComponent } from './componentes/home/home.component';
@@ -16,13 +16,11 @@ import { AnimalesListadoComponent } from './componentes/animales-listado/animale
 import { AnimalAddComponent } from './componentes/animal-add/animal-add.component';
 import { AnimalDetailComponent } from './componentes/animal-detail/animal-detail.component';
 import { AnimalEditComponent } from './componentes/animal-edit/animal-edit.component';
+import { RegisterComponent } from './componentes/user/register/register.component';
 
 //Servicios
 import { AnimalService } from 'src/app/servicios/animal.service';
-import { RegisterComponent } from './componentes/user/register/register.component';
-
-
-
+import { LoginService } from 'src/app/servicios/login.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +42,7 @@ import { RegisterComponent } from './componentes/user/register/register.componen
     HttpClientModule,
     FormsModule
   ],
-  providers: [AnimalService],
+  providers: [AnimalService, LoginService],
   bootstrap: [PrincipalComponent]
 })
 export class AppModule { }

@@ -19,11 +19,15 @@
                 <a class="nav-link" href="#" [routerLink]="['/home']">Gatos</a>
             </li>
             <li class="nav-item mr-3">
-                <a class="nav-link" href="#" [routerLink]="['/crear-animal']" [routerLinkActive]="['activado']">Añadir mascota</a>
+                <a class="nav-link" href="#" [routerLink]="['/crear-animal']" [routerLinkActive]="['activado']">Añadir
+                    mascota</a>
             </li>
-            <li class="nav-item mr-3">
-                <a class="nav-link" href="#" [routerLink]="['/register']" [routerLinkActive]="['activado']">Registro</a>
-            </li>
+            <div *ngIf="">
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="#" [routerLink]="['/register']"
+                        [routerLinkActive]="['activado']">Registro</a>
+                </li>
+            </div>
             <li class="nav-item">
                 <button type="button" class="btn btn-info" [routerLink]="['/login']">Entrar</button>
             </li>
