@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { LoginService } from 'src/app/servicios/login.service';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+
+import { LoginService } from 'src/app/servicios/login.service';
+import { LocalstorageService } from 'src/app/servicios/localstorage.service';
 
 @Component({
   selector: 'app-login',
@@ -8,36 +10,35 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  login = {
+  loginUsuario = {
     email: null,
     password: null
   }
-
-
-
-  
-  
-  @Input() logueado: boolean;
 
   constructor(
     private _loginService: LoginService,
     private _route: ActivatedRoute,
     private _router: Router,
-  ) {
-   }
+    private _localStorage: LocalstorageService
+  ) {}
 
   ngOnInit(): void {
+    
   }
 
-  loginUsuario() {
-    this._loginService.loginUsuario(this.login).subscribe(
+  reloadPage(){
+    window.location.reload();
+  }
+
+  login() {
+    this._loginService.login(this.loginUsuario).subscribe(
       response => {
         if (response['code'] == 200) {
           this._router.navigate(['/home']);
-          this.logueado = true;
-          console.log('Logueado: '+this.logueado);
+          //this.reloadPage();//Recarga la pagina
+          //Se almacena el usuario y contraseña en en localstorage 
+          this._localStorage.set('usuario', this.loginUsuario);
         } else {
-          this.logueado = false;
           console.log(response);
         }
       },
@@ -48,9 +49,5 @@ export class LoginComponent implements OnInit {
   }
 
   
-
-  logout() {
-    
-  }
 
 }

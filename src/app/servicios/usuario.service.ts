@@ -18,7 +18,7 @@ export class UsuarioService {
    }
 
    getUsuarios(): Observable<any> {
-    return this.httpClient.get(this.url+'regsitro');
+    return this.httpClient.get(this.url+'registro');
    }
 
    addUsuario(usuario: Usuario): Observable<any>{

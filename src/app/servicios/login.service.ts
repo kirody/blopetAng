@@ -17,12 +17,10 @@ export class LoginService {
     this.url = GLOBAL.url;
    }
 
-  loginUsuario(login): Observable<any>{
+  login(login): Observable<any>{
     let json = JSON.stringify(login);
     let params = 'json='+json;
     let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
-
-    //localStorage.setItem("usuario", json);
 
     return this.httpClient.post(this.url+'login', params, {headers: headers});
   }

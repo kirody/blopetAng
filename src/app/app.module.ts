@@ -21,6 +21,7 @@ import { RegisterComponent } from './componentes/user/register/register.componen
 //Servicios
 import { AnimalService } from 'src/app/servicios/animal.service';
 import { LoginService } from 'src/app/servicios/login.service';
+import { LocalstorageService } from 'src/app/servicios/localstorage.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { LoginService } from 'src/app/servicios/login.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [AnimalService, LoginService],
+  providers: [AnimalService, LoginService, LocalstorageService],
   bootstrap: [PrincipalComponent]
 })
 export class AppModule { }

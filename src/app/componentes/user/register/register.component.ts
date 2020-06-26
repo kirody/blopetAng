@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
     this._usuarioService.addUsuario(this.usuario).subscribe(
       response => {
         if(response['code'] == 200){
-          this._router.navigate(['/home']);
+          this._router.navigate(['/login']);
         }else{
           console.log(response);
         }
