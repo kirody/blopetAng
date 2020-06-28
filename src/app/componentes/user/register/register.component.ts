@@ -13,12 +13,18 @@ import { Usuario } from 'src/app/models/usuario';
 export class RegisterComponent implements OnInit {
   public usuario: Usuario;
 
+  public tipoUsuario = [
+    {id: 1, tp: 'Adoptante'},
+    {id: 2, tp: 'Protectora'}
+  ]
+
+  
   constructor(
     private _usuarioService: UsuarioService,
     private _route: ActivatedRoute,
     private _router: Router,
   ) {
-    this.usuario = new Usuario(0,'','','');
+    this.usuario = new Usuario(0,0,'','','');
    }
 
   ngOnInit(): void {

@@ -15,31 +15,27 @@ export class MenuComponent implements OnInit {
   constructor(private _route: ActivatedRoute,
     private _router: Router,
     private _localStorage: LocalstorageService) {
-  }
 
-  loginIn() {
-    if (this._localStorage.get('usuario')) {
-      this.login = true;
-      console.log('login: ' + this.login);
-    }
-    else {
-      this.login = false;
-      console.log('login: ' + this.login);
-    }
+      if (this._localStorage.get('usuario')) {
+        this.login = true;
+        console.log('login: ' + this.login);
+      }
+      else {
+        this.login = false;
+        console.log('login: ' + this.login);
+      }
   }
 
   logout() {
     if (this._localStorage.get('usuario')) {
-      this._localStorage.remove('usuario')
-      this.reloadPage();//Recarga la pagina
+      this._localStorage.remove('usuario');
+      this._localStorage.clear();
+      window.location.reload();//Recarga la pagina
     }
-
   }
 
-  reloadPage() {
-    window.location.reload();
-  }
   ngOnInit(): void {
+    
   }
 
 }

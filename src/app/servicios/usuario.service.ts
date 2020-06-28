@@ -29,8 +29,4 @@ export class UsuarioService {
     return this.httpClient.post(this.url+'registro', params, {headers: headers});
   }
 
-
-
-
-
 }

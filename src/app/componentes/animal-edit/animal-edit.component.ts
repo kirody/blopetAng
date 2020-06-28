@@ -1,9 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { AnimalesListadoComponent } from '../animales-listado/animales-listado.component';
+
+//Servicios
 import { AnimalService } from 'src/app/servicios/animal.service';
-import { Animal } from '../../models/animal';
+import { TipoAnimalService } from 'src/app/servicios/tipoAnimal.service';
+import { ProvinciaService } from 'src/app/servicios/provincia.service';
+import { TamanioService } from 'src/app/servicios/tamanio.service';
+import { EdadService } from 'src/app/servicios/edad.service';
+import { SexoService } from 'src/app/servicios/sexo.service';
+import { RazaPerroService } from 'src/app/servicios/raza-perro.service';
+
 import { GLOBAL } from 'src/app/servicios/global';
+import { Animal } from '../../models/animal';
 
 @Component({
   selector: 'app-animal-edit',
@@ -16,17 +24,38 @@ export class AnimalEditComponent implements OnInit {
   public resultUpload;
   public is_edit;
 
+  public tipoAnimal: any[] = [];
+  public provincias: any[] = [];
+  public tamanios: any[] = [];
+  public edades: any[] = [];
+  public sexos: any[] = [];
+  public razasPerro: any[] = [];
+
+  tipoSeleccionado: number = 0;
+
   constructor(
     private _animalService: AnimalService,
     private _route: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _tipoAanimalService: TipoAnimalService,
+    private _provinciaService: ProvinciaService,
+    private _tamanioService: TamanioService,
+    private _edadService: EdadService,
+    private _sexoService: SexoService,
+    private _razaPerroService: RazaPerroService
   ) {
     this.animal = new Animal(0,'','','','','','','','','','');
+    this.tipoAnimal = _tipoAanimalService.getRazas();
+    this.provincias = _provinciaService.getProvincias();
+    this.tamanios = _tamanioService.getTamanios();
+    this.edades = _edadService.getEdades();
+    this.sexos = _sexoService.getSexos();
+    this.razasPerro = _razaPerroService.getRazasPerro();
     this.is_edit = true;
   }
 
   ngOnInit(): void {
-    console.log('Este edit-animal-listado.component.ts cargado');
+    console.log('Este animal-edit.component.ts cargado');
     this.getAnimal();
   }
 

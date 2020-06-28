@@ -31,7 +31,6 @@ export class AnimalAddComponent implements OnInit {
   public sexos: any[] = [];
   public razasPerro: any[] = [];
 
-
   tipoSeleccionado: number = 0;
 
   constructor(
@@ -51,7 +50,7 @@ export class AnimalAddComponent implements OnInit {
     this.tamanios = _tamanioService.getTamanios();
     this.edades = _edadService.getEdades();
     this.sexos = _sexoService.getSexos();
-    this.razasPerro = _razaPerroService.getRazasPerro().sort();
+    this.razasPerro = _razaPerroService.getRazasPerro();
   }
 
   ngOnInit(): void {

@@ -20,13 +20,12 @@ export class LoginComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _localStorage: LocalstorageService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    
   }
 
-  reloadPage(){
+  reloadPage() {
     window.location.reload();
   }
 
@@ -34,8 +33,10 @@ export class LoginComponent implements OnInit {
     this._loginService.login(this.loginUsuario).subscribe(
       response => {
         if (response['code'] == 200) {
-          this._router.navigate(['/home']);
-          //this.reloadPage();//Recarga la pagina
+          this._router.navigate(['/home'])
+          .then(() => {//si redirige a /home entonces recarga /home
+            window.location.reload();
+          });
           //Se almacena el usuario y contraseña en en localstorage 
           this._localStorage.set('usuario', this.loginUsuario);
         } else {
@@ -47,7 +48,5 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-
-  
 
 }

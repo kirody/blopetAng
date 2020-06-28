@@ -2,3 +2,13 @@
     font-weight: bold;
     background: rgb(218, 218, 206);
 }
+
+.dropdown-menu{
+    left: auto;
+    right: 1px;
+}
+
+.icon-dropdown-menu{
+    width: 18px;
+    margin-right: 8px;
+}

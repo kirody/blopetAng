@@ -5,7 +5,37 @@
                 <div id="login-box" class="col-md-12">
                     <form #formRegister="ngForm" (ngSubmit)="onSubmit()" id="form-register" class="form" action=""
                         method="post">
-                        <h3 class="text-center text-info">Regístrate</h3>
+                        <h3 class="text-center text-info pb-4">Regístrate</h3>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col-10">
+                                    <label class="text-info">
+                                        Selecciona un tipo de usuario*
+                                        <span *ngIf="!tipo.valid && tipo.touched" class="badge badge-danger">Este
+                                            campo
+                                            es incorrecto o esta vacio</span>
+                                    </label>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col-10">
+                                    <select #tipo="ngModel" name="tipo" [(ngModel)]="usuario.tipo" class="form-control" required>
+                                        <option selected value="">--Selecciona una opción</option>
+                                        <option *ngFor="let tip of tipoUsuario" [value]=tip.id>
+                                            {{tip.tp}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-1 content-icon-check">
+                                    <span *ngIf="nombre.valid">
+                                        <img src="../../../../assets/icons/icon-check.png" class="icon-check" alt="...">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-1"></div>
@@ -23,7 +53,7 @@
                                 <div class="col-1"></div>
                                 <div class="col-10">
                                     <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="usuario.nombre"
-                                        class="form-control" required pattern="[a-zA-Z ]{3,30}">
+                                        class="form-control" required pattern="[a-zA-Z0-9 ]{3,30}">
                                 </div>
                                 <div class="col-1 content-icon-check">
                                     <span *ngIf="nombre.valid">
