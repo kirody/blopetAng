@@ -11,7 +11,7 @@ import { LocalstorageService } from 'src/app/servicios/localstorage.service';
 })
 export class LoginComponent implements OnInit {
   loginUsuario = {
-    nombre:null,
+    nombre: null,
     email: null,
     password: null,
   }
@@ -36,8 +36,12 @@ export class LoginComponent implements OnInit {
           .then(() => {//si redirige a /home entonces recarga /home
             window.location.reload();
           });
+          console.log(response);
+          //console.log(response['data'][0].nombre);
+          //console.log(response['data'][0].email);
+          
           //Se almacena el usuario y contraseña en en localstorage 
-          this._localStorage.set('usuario', this.loginUsuario);
+          this._localStorage.set('usuario', response['data']);
         } else {
           console.log(response);
         }

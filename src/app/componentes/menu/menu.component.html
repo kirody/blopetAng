@@ -31,12 +31,15 @@
             <div *ngIf="login">
                 <div class="btn-group">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                        aria-haspopup="true" aria-expanded="false"><img class="icon-dropdown-menu"
+                            src="../../../assets/icons/icon-user.png" alt="">
                         Mi Perfil
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#"><img class="icon-dropdown-menu"
-                            src="" alt=""></a>
+                        <a class="dropdown-item disabled" href="#">Hola,
+                            {{nombre}}</a>
+                        <a class="dropdown-item disabled" href="#"><img class="icon-dropdown-menu"
+                                src="../../../assets/icons/icon-circle.png" style="width: 13px;" alt="">Conectado</a>
                         <a class="dropdown-item" href="#"><img class="icon-dropdown-menu"
                                 src="../../../assets/icons/icon-favorite.png" alt="">Favoritos</a>
                         <div class="dropdown-divider"></div>

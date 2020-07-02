@@ -30,11 +30,12 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     if (this._localStorage.get('usuario')) {
-      this.email = this._localStorage.get('usuario').email;
-      this.nombre = this._localStorage.get('usuario').nombre;
+      this.email = this._localStorage.get('usuario')[0].email;
+      this.nombre = this._localStorage.get('usuario')[0].nombre;
+      //console.log(this._localStorage.get('usuario')[0].email);
       this.login = true;
       console.log('login: ' + this.login);
-      if (this.email === 'admin@admin.com' || this.nombre === 'admin' ) {
+      if (this.email === 'admin@admin.com') {
         this.admin = true;
       }
     }
@@ -42,7 +43,6 @@ export class MenuComponent implements OnInit {
       this.login = false;
       console.log('login: ' + this.login);
     }
-    //console.log(this._localStorage.get('usuario').hasOwnProperty('email'));
   }
 
 }
