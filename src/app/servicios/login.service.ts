@@ -10,7 +10,6 @@ import { GLOBAL } from './global';
 export class LoginService {
   public url: string;
 
-
   constructor(
     public httpClient: HttpClient
   ) {
@@ -23,9 +22,5 @@ export class LoginService {
     let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
 
     return this.httpClient.post(this.url+'login', params, {headers: headers});
-  }
-
-  grabarLocalStorage() {
-    
   }
 }

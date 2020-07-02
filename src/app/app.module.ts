@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 //Componentes
 import { AppComponent } from './app.component';
@@ -18,10 +18,12 @@ import { AnimalDetailComponent } from './componentes/animal-detail/animal-detail
 import { AnimalEditComponent } from './componentes/animal-edit/animal-edit.component';
 import { RegisterComponent } from './componentes/user/register/register.component';
 
+
 //Servicios
 import { AnimalService } from 'src/app/servicios/animal.service';
 import { LoginService } from 'src/app/servicios/login.service';
 import { LocalstorageService } from 'src/app/servicios/localstorage.service';
+import { UniquePipe } from './pipes/unique.pipe';
 
 @NgModule({
   declarations: [
@@ -35,13 +37,15 @@ import { LocalstorageService } from 'src/app/servicios/localstorage.service';
     AnimalAddComponent,
     AnimalDetailComponent,
     AnimalEditComponent,
-    RegisterComponent
+    RegisterComponent,
+    UniquePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AutocompleteLibModule
   ],
   providers: [AnimalService, LoginService, LocalstorageService],
   bootstrap: [PrincipalComponent]

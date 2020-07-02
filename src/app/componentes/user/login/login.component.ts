@@ -11,9 +11,12 @@ import { LocalstorageService } from 'src/app/servicios/localstorage.service';
 })
 export class LoginComponent implements OnInit {
   loginUsuario = {
+    nombre:null,
     email: null,
-    password: null
+    password: null,
   }
+
+  admin: boolean = false;
 
   constructor(
     private _loginService: LoginService,
@@ -23,10 +26,6 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  }
-
-  reloadPage() {
-    window.location.reload();
   }
 
   login() {
