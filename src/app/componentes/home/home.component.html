@@ -1,5 +1,5 @@
 <header class="masthead text-white text-center">
-    <div class="overlay"></div>
+    <!--<div class="overlay"></div>-->
     <div class="container">
         <div class="row">
             <div class="col-xl-9 mx-auto">
@@ -12,6 +12,7 @@
                 <h1 class="mb-5">Tu buscador de mascotas</h1>
             </div>
             <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                <!--
                 <form>
                     <div class="form-row">
                         <div class="col-12 col-md-9 mb-2 mb-md-0">
@@ -22,6 +23,45 @@
                         </div>
                     </div>
                 </form>
+                -->
+                <select [(ngModel)]="keyword" class="form-control selector text-capitalize">
+                    <option *ngFor="let item of keywords" [value]="item">{{item}}</option>
+                </select>
+                <div class="ng-autocomplete">
+                    <ng-autocomplete 
+                        [data]="data$"
+                        [searchKeyword]="keyword"
+                        placeHolder="Buscar..."
+                        (selected)='selectEvent($event)'
+                        (inputChanged)='onChangeSearch($event)'
+                        (inputFocused)='onFocused($event)'
+                        historyIdentifier="countries"
+                        [itemTemplate]="itemTemplate"
+                        [notFoundTemplate]="notFoundTemplate">                              
+                    </ng-autocomplete>
+                    
+                    <ng-template #itemTemplate let-item>
+                     <div *ngIf="keyword == 'nombre'">
+                        <a class="text-capitalize" [innerHTML]="item.nombre"></a>
+                     </div>
+                     <div *ngIf="keyword == 'edad'">
+                        <a class="text-capitalize" [innerHTML]="item.edad"></a>
+                     </div>
+                     <div *ngIf="keyword == 'sexo'">
+                        <a class="text-capitalize" [innerHTML]="item.sexo"></a>
+                     </div>
+                     <div *ngIf="keyword == 'raza'">
+                        <a class="text-capitalize" [innerHTML]="item.raza"></a>
+                     </div>
+                     <div *ngIf="keyword == 'provincia'">
+                        <a class="text-capitalize" [innerHTML]="item.provincia"></a>
+                     </div>
+                    </ng-template>     
+                     
+                    <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                    </ng-template>
+                </div>
             </div>
         </div>
     </div>
@@ -116,7 +156,7 @@
 
 <!-- Call to Action -->
 <section class="call-to-action text-white text-center">
-    <div class="overlay"></div>
+    <!--<div class="overlay"></div>-->
     <div class="container">
         <div class="row">
             <div class="col-xl-9 mx-auto">
@@ -129,7 +169,7 @@
                             <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
                         </div>
                         <div class="col-12 col-md-3">
-                            <button type="submit" class="btn btn-block btn-lg btn-info">Sign up!</button>
+                            <button type="submit" class="btn btn-block btn-lg btn-info">Susbcribirse!</button>
                         </div>
                     </div>
                 </form>

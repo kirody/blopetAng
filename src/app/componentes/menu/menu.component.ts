@@ -11,19 +11,13 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class MenuComponent implements OnInit {
 
   login: boolean;
-
+  admin: boolean = false;
+  email: any;
+  nombre: any;
   constructor(private _route: ActivatedRoute,
     private _router: Router,
     private _localStorage: LocalstorageService) {
-
-      if (this._localStorage.get('usuario')) {
-        this.login = true;
-        console.log('login: ' + this.login);
-      }
-      else {
-        this.login = false;
-        console.log('login: ' + this.login);
-      }
+    //console.log(this._localStorage.get('usuario').email);
   }
 
   logout() {
@@ -35,7 +29,20 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    if (this._localStorage.get('usuario')) {
+      this.email = this._localStorage.get('usuario').email;
+      this.nombre = this._localStorage.get('usuario').nombre;
+      this.login = true;
+      console.log('login: ' + this.login);
+      if (this.email === 'admin@admin.com' || this.nombre === 'admin' ) {
+        this.admin = true;
+      }
+    }
+    else {
+      this.login = false;
+      console.log('login: ' + this.login);
+    }
+    //console.log(this._localStorage.get('usuario').hasOwnProperty('email'));
   }
 
 }

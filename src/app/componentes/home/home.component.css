@@ -120,4 +120,19 @@
     opacity: 0.3;
   }
   
-  
+  .ng-autocomplete, ul li a {
+    padding: 14px 15px;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba(0,0,0,.87);
+    font-size: 15px;
+    text-align: start;
+    width: 100%;
+    border-radius: 25px;
+}
+
+.selector{
+  width: 40%;
+  margin: auto;
+}
