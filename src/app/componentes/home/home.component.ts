@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/servicios/data.service';
 import { Observable } from 'rxjs';
 import * as _ from 'lodash';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +17,11 @@ export class HomeComponent implements OnInit {
   public keywords = ['nombre','edad','sexo','raza','provincia'];
   
   public param: string;
-  constructor(private dataSVC: DataService) { }
+  constructor(private dataSVC: DataService,
+              private _titleService: Title) { }
 
   ngOnInit(): void {
+    this._titleService.setTitle('Blopet | Inicio');
     this.getData();
   }
 
@@ -29,11 +32,6 @@ export class HomeComponent implements OnInit {
            // if(this.keyword == 'nombre'){
              // this.data$ = _.uniqBy(this.data$, 'nombre');
             //}
-
-            if(this.keyword == "sexo"){
-              this.data$ = _.uniqBy(this.data$, 'sexo');
-            }
-
             //console.log(this.data$);
         },
       );
@@ -51,6 +49,7 @@ export class HomeComponent implements OnInit {
     onFocused(e){
       // do something when input is focused
     }
+    
     
   }
   

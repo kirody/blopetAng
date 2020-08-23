@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
+import { Title } from '@angular/platform-browser';
 import { AnimalService } from 'src/app/servicios/animal.service';
 import { Animal } from '../../models/animal';
 
@@ -15,10 +15,12 @@ export class AnimalDetailComponent implements OnInit {
   constructor(
     private _animalService: AnimalService,
     private _route: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _titleService: Title
   ) {}
 
   ngOnInit(): void {
+    this._titleService.setTitle('Blopet | Ficha mascota');
     console.log('animal-detail.component.ts cargado')
     this.getAnimal();
   }

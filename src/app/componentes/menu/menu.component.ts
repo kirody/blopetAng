@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocalstorageService } from 'src/app/servicios/localstorage.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
@@ -14,6 +14,7 @@ export class MenuComponent implements OnInit {
   admin: boolean = false;
   email: any;
   nombre: any;
+
   constructor(private _route: ActivatedRoute,
     private _router: Router,
     private _localStorage: LocalstorageService) {
@@ -44,5 +45,4 @@ export class MenuComponent implements OnInit {
       console.log('login: ' + this.login);
     }
   }
-
 }

@@ -1,17 +1,12 @@
 .container{
-    padding-top: 20px;
-    padding-bottom: 10px;
-    border-radius: 75px;
-    margin-top: 20px;
-    margin-bottom: 20px;
     width: 85%;
     background: #0068621f;
 }
 
 form{
-    padding: 25px;
+    padding-left: 40px;
 }
 
-input, textarea{
-    width: 95%;
+input, textarea, select{
+    width: 90%;
 }

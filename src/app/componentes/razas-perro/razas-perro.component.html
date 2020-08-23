@@ -1,6 +1,6 @@
 <div class="fondo">
     <div class="container pt-3 pb-5">
-        <h3>Mascotas en adopción</h3>
+        <h3>Perros en adopción</h3>
         <hr>
         <div *ngIf="!animales">
             <p>No existen resultados</p>
@@ -8,7 +8,7 @@
         <div *ngIf="animales">
             <h6><span class="badge badge-secondary">Numero de registros: {{numAnimales}}</span></h6>
             <div class="row ">
-                <div *ngFor="let animal of animales | paginate: {itemsPerPage: 8, currentPage: pageActual}"
+                <div *ngFor="let animal of animales | paginate: {itemsPerPage: 7, currentPage: pageActual}"
                     class="col-md-3 d-flex justify-content-center">
                     <div class="card mb-3 shadow">
                         <div *ngIf="animal.imagen" class="img-container">
@@ -71,7 +71,6 @@
             </div>
         </div>
         <pagination-controls class="my-pagination" (pageChange)="pageActual = $event" previousLabel="Anterior"
-            nextLabel="Siguiente">
-        </pagination-controls>
+            nextLabel="Siguiente"></pagination-controls>
     </div>
 </div>

@@ -1,9 +1,20 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpResponse, HttpRequest, XhrFactory } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
+import { GLOBAL } from './global';
 @Injectable({
   providedIn: 'root'
 })
 export class RazaPerroService {
+  public url: string;
+
+  constructor(
+    public httpClient: HttpClient
+  ) {
+    this.url = GLOBAL.url;
+   }
+
   public razasPerro = [
     { id: 1, nomRaza: "Chihuahua" },
     { id: 2, nomRaza: "Pastor Alemán" },
@@ -33,7 +44,10 @@ export class RazaPerroService {
     { id: 26, nomRaza: "Bichón Maltés" },
     { id: 27, nomRaza: "Gran Danés" },
   ];
-  constructor() { }
+
+  getRazaPerro() : Observable<any>{
+    return this.httpClient.get(this.url+'razas-perro');
+  }
 
   getRazasPerro(){
     return this.razasPerro;

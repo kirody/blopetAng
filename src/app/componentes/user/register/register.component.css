@@ -23,6 +23,27 @@ border-radius: 10px;
   border-radius: 25px;
 }
 
+.btn-info{
+  border-radius: 25px;
+  }
+  
+  #username{
+    border-radius: 25px;
+  }
+  
+  #password{
+    border-radius: 25px;
+  }
+
+
+  .icon-check{
+    width: 20px;
+  }
+
+  .content-icon-check{
+    margin-left: inherit;
+  }
+
 /*.container {
   margin-top: 60px;
   margin-bottom: 60px;

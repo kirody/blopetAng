@@ -1,37 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { AnimalService } from 'src/app/servicios/animal.service';
-import { Animal } from '../../models/animal';
 import { Title } from '@angular/platform-browser';
+import { Animal } from '../../models/animal';
+import { RazaGatoService } from 'src/app/servicios/raza-gato.service';
+import { AnimalService } from 'src/app/servicios/animal.service';
 import { LocalstorageService } from 'src/app/servicios/localstorage.service';
-
 @Component({
-  selector: 'app-animales-listado',
-  templateUrl: './animales-listado.component.html',
-  styleUrls: ['./animales-listado.component.css']
+  selector: 'app-razas-gato',
+  templateUrl: './razas-gato.component.html',
+  styleUrls: ['./razas-gato.component.css']
 })
-export class AnimalesListadoComponent implements OnInit {
+export class RazasGatoComponent implements OnInit {
   public animales: Animal[];
   public numAnimales: number;
   public confirmado;
-  pageActual: number = 1;
 
   email: any;
   admin: boolean = false;
+  pageActual: number = 1;
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
+    private _razasGatoService: RazaGatoService,
     private _animalService: AnimalService,
     private _localStorage: LocalstorageService,
     private _titleService: Title
   ) { }
 
   ngOnInit(): void {
-    this._titleService.setTitle('Blopet | Mascotas');
-    console.log('animales-listado.component.ts cargado');
-    this.getAnimales();
-
+    this._titleService.setTitle('Blopet | Gatos');
+    this.getRazasGato();
 
     if (this.email = this._localStorage.get('usuario')) {
       if (this.email[0].email === 'admin@admin.com') {
@@ -40,8 +39,8 @@ export class AnimalesListadoComponent implements OnInit {
     }
   }
 
-  getAnimales() {
-    this._animalService.getAnimales().subscribe(
+  getRazasGato() {
+    this._razasGatoService.getRazaGato().subscribe(
       resultado => {
         if (resultado['code'] != 200) {
           console.log(resultado);
@@ -56,24 +55,24 @@ export class AnimalesListadoComponent implements OnInit {
     );
   }
 
-  borrarConfirm(id) {
+  borrarConfirm(id){
     this.confirmado = id;
   }
 
-  cancelarConfirm() {
+  cancelarConfirm(){
     this.confirmado = null;
   }
 
-  onDeleteAnimal(id) {
+  onDeleteAnimal(id){
     this._animalService.deleteAnimal(id).subscribe(
       response => {
-        if (response['code'] == 200) {
-          this.getAnimales();
-        } else {
-          alert('Error al borrar el animal');
-        }
+          if(response['code'] == 200){
+            this.getRazasGato();
+          }else{
+            alert('Error al borrar el animal');
+          }
       },
-      error => {
+      error =>{
         console.log(<any>error);
       }
     );

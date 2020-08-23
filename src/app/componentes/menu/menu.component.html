@@ -6,43 +6,55 @@
     </button>
     <div class="collapse navbar-collapse mr-4" id="navbarNav">
         <ul class="navbar-nav ml-3 ml-auto">
-            <div *ngIf="admin">
+            <div *ngIf="!admin">
                 <li class="nav-item3">
-                    <a class="nav-link" href="#" [routerLink]="['/animales']"
-                        [routerLinkActive]="['activado']">Mascotas</a>
+                    <a class="nav-link" href="#" [routerLink]="['/animales']" [routerLinkActive]="['activado']">Listado
+                        mascotas</a>
                 </li>
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="#" [routerLink]="['/home']">Provincias</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" [routerLink]="['/home']">Perros</a>
+                <a class="nav-link" href="#" [routerLink]="['/razas-perros']"
+                    [routerLinkActive]="['activado']">Perros</a>
             </li>
             <li class="nav-item mr-3">
-                <a class="nav-link" href="#" [routerLink]="['/home']">Gatos</a>
+                <a class="nav-link" href="#" [routerLink]="['/razas-gatos']" [routerLinkActive]="['activado']">Gatos</a>
             </li>
-            <div *ngIf="admin">
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="#" [routerLink]="['/crear-animal']"
-                        [routerLinkActive]="['activado']">Añadir
-                        mascota</a>
-                </li>
-            </div>
+
             <div *ngIf="login">
                 <div class="btn-group">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false"><img class="icon-dropdown-menu"
+                        aria-haspopup="true" aria-expanded="false"><img style="width: 18px;"
                             src="../../../assets/icons/icon-user.png" alt="">
-                        Mi Perfil
+                        Cuenta
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item disabled" href="#">Hola,
+                        <a class="dropdown-item disabled text-capitalize" href="#">Hola,
                             {{nombre}}</a>
-                        <a class="dropdown-item disabled" href="#"><img class="icon-dropdown-menu"
-                                src="../../../assets/icons/icon-circle.png" style="width: 13px;" alt="">Conectado</a>
-                        <a class="dropdown-item" href="#"><img class="icon-dropdown-menu"
-                                src="../../../assets/icons/icon-favorite.png" alt="">Favoritos</a>
+                        <a class="dropdown-item disabled" href="#"><img
+                                style="width: 13px; margin-right: 12px; margin-left: 2px;"
+                                src="../../../assets/icons/icon-circle.png" alt="">Conectado</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/perfil']"
+                            [routerLinkActive]="['activado']"><img
+                                style="width: 13px; margin-right: 12px; margin-left: 2px;"
+                                src="../../../assets/icons/icon-circle.png" alt="">Mi Perfil</a>
+                        <div *ngIf="!admin">
+                            <a class="dropdown-item" href="#"><img class="icon-dropdown-menu"
+                                    src="../../../assets/icons/icon-favorite.png" alt="">Favoritos</a>
+                        </div>
+                        <div *ngIf="admin">
+                            <a class="dropdown-item" href="#" [routerLink]="['/animales']"
+                                [routerLinkActive]="['activado']"><img class="icon-dropdown-menu"
+                                    src="../../../assets/icons/icon-list.png" alt="">Listado
+                                mascotas</a>
+                            <a class="dropdown-item" href="#" [routerLink]="['/crear-animal']"
+                                [routerLinkActive]="['activado']"><img class="icon-dropdown-menu"
+                                    src="../../../assets/icons/icon-add-new.png" alt="">Añadir mascota</a>
+                        </div>
                         <div class="dropdown-divider"></div>
+
                         <a class="dropdown-item" href="#" (click)="logout()"><img class="icon-dropdown-menu"
                                 src="../../../assets/icons/icon-exit.png" alt="">Cerrar sesión</a>
                     </div>

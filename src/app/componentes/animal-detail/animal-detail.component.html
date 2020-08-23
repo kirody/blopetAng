@@ -1,29 +1,43 @@
-<div class="container mt-5 mb-5">
-    <div *ngIf="!animal">
-        <p>No se encuentra el animal</p>
-    </div>
+<div class="fondo">
+    <div class="container pt-5 pb-5">
+        <div *ngIf="!animal">
+            <p>No se encuentra el animal</p>
+        </div>
 
-    <div *ngIf="animal">
-        <div class="row d-flex justify-content-center">
-            <div class="col-sm-5" *ngIf="animal.imagen">
-                <img src="http://localhost:8080/Angular/blopet/uploads/{{animal.imagen}}" class="img-thumbnail shadow p-3 mb-5 bg-white roundeds"
-                    alt="...">
-            </div>
-            <div class="col-sm-6 ficha border shadow p-3 mb-5 bg-white rounded">
-                <ul class="list-group list-group-flush">
-                    <div class="row pl-3 pb-3">
-                        <img src="../../../assets/icons/icon-clipboard.png" style="width: 45px;" alt="..." class="d-flex flex-column-reverse">
-                        <span class="titulo">Ficha del animal</span>
-                    </div>
-                    <li class="list-group-item text-capitalize"> <strong>Nombre:</strong> {{animal.nombre}}</li>
-                    <li class="list-group-item text-capitalize"> <strong>Edad:</strong> {{animal.edad}}</li>
-                    <li class="list-group-item text-capitalize"> <strong>Tamaño:</strong> {{animal.tamanio}}</li>
-                    <li class="list-group-item text-capitalize"> <strong>Sexo:</strong> {{animal.sexo}}</li>
-                    <li class="list-group-item text-capitalize"> <strong>Vacunas:</strong> {{animal.vacunas}}</li>
-                    <li class="list-group-item text-capitalize"> <strong>Descripción:</strong> {{animal.descripcion}}</li>
-                    <li class="list-group-item text-capitalize"> <strong>Raza:</strong> {{animal.raza}}</li>
-                    <li class="list-group-item text-capitalize"> <strong>Provincia:</strong> {{animal.provincia}}</li>
-                </ul>
+        <div *ngIf="animal">
+            <div class="row d-flex justify-content-center">
+                <div class="col-sm-5 img-container" *ngIf="animal.imagen">
+                    <img src="http://localhost:8080/Angular/blopet/uploads/{{animal.imagen}}"
+                        class="img-thumbnail shadow p-3 mb-5 bg-white roundeds" alt="...">
+                </div>
+                <div class="col-sm-7 border shadow p-3 mb-5 bg-white rounded ficha">
+                    <ul class="list-group list-group-flush">
+                        <div class="row pl-3 pb-3">
+                            <img src="../../../assets/icons/icon-clipboard.png" style="width: 45px;" alt="..."
+                                class="d-flex flex-column-reverse">
+                            <span class="titulo">Ficha del animal</span>
+                        </div>
+                        <li class="list-group-item text-capitalize">
+                            <span class="float-left"><strong>Nombre:</strong> {{animal.nombre}}</span>
+                            <span class="ml-4" *ngIf="animal.sexo == 'Macho'"><strong>Sexo: </strong><img
+                                    src="../../../assets/icons/icon-male.png" style="width: 16px; margin-right: 5px;"
+                                    alt="...">{{animal.sexo}}</span>
+                            <span class="ml-4" *ngIf="animal.sexo == 'Hembra'"><strong>Sexo: </strong><img
+                                    src="../../../assets/icons/icon-female.png" style="width: 16px; margin-right: 5px;"
+                                    alt="...">{{animal.sexo}}</span>
+                        </li>
+                        <li class="list-group-item text-capitalize"><strong>Edad:</strong> {{animal.edad}}</li>
+                        <li class="list-group-item text-capitalize"><strong>Raza:</strong> {{animal.raza}}</li>
+                        <li class="list-group-item text-capitalize"><strong>Tamaño:</strong> {{animal.tamanio}}</li>
+                        <li class="list-group-item text-capitalize"><strong>Provincia:</strong> {{animal.provincia}}
+                        </li>
+                        <li class="list-group-item text-capitalize"><strong>Vacunas:</strong> {{animal.vacunas}}</li>
+                        <li class="list-group-item text-capitalize"><strong>Descripción:</strong>
+                            {{animal.descripcion}}</li>
+
+
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
