@@ -27,7 +27,7 @@
                 <div class="btn-group">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false"><img style="width: 18px;"
-                            src="../../../assets/icons/icon-user.png" alt="">
+                            src="" alt="">
                         Cuenta
                     </button>
                     <div class="dropdown-menu">
@@ -39,17 +39,17 @@
                         <a class="dropdown-item" href="#" [routerLink]="['/perfil']"
                             [routerLinkActive]="['activado']"><img
                                 style="width: 13px; margin-right: 12px; margin-left: 2px;"
-                                src="../../../assets/icons/icon-circle.png" alt="">Mi Perfil</a>
+                                src="../../../assets/icons/icon-user.png" alt="">Mi Perfil</a>
                         <div *ngIf="!admin">
                             <a class="dropdown-item" href="#"><img class="icon-dropdown-menu"
                                     src="../../../assets/icons/icon-favorite.png" alt="">Favoritos</a>
                         </div>
                         <div *ngIf="admin">
-                            <a class="dropdown-item" href="#" [routerLink]="['/animales']"
+                            <a class="dropdown-item text-info" href="#" [routerLink]="['/animales']"
                                 [routerLinkActive]="['activado']"><img class="icon-dropdown-menu"
                                     src="../../../assets/icons/icon-list.png" alt="">Listado
                                 mascotas</a>
-                            <a class="dropdown-item" href="#" [routerLink]="['/crear-animal']"
+                            <a class="dropdown-item text-info" href="#" [routerLink]="['/crear-animal']"
                                 [routerLinkActive]="['activado']"><img class="icon-dropdown-menu"
                                     src="../../../assets/icons/icon-add-new.png" alt="">Añadir mascota</a>
                         </div>

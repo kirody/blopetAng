@@ -18,7 +18,12 @@
                             <span class="titulo">Ficha del animal</span>
                         </div>
                         <li class="list-group-item text-capitalize">
-                            <span class="float-left"><strong>Nombre:</strong> {{animal.nombre}}</span>
+                            <span class="float-left" *ngIf="animal.tipo == '1'">
+                                <strong>Nombre: </strong>
+                                <img src="../../../assets/icons/icon-dog-bone.png" width="20px" height="20px"> {{animal.nombre}}</span>
+                            <span class="float-left" *ngIf="animal.tipo == '2'">
+                                <strong>Nombre: </strong> 
+                                <img src="../../../assets/icons/icon-fish-bone.png" width="25px" height="25px"> {{animal.nombre}}</span>
                             <span class="ml-4" *ngIf="animal.sexo == 'Macho'"><strong>Sexo: </strong><img
                                     src="../../../assets/icons/icon-male.png" style="width: 16px; margin-right: 5px;"
                                     alt="...">{{animal.sexo}}</span>

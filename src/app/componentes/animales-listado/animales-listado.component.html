@@ -1,6 +1,6 @@
 <div class="fondo">
     <div class="container pt-3 pb-5">
-        <h3>Mascotas en adopción</h3>
+        <h3><img src="../../../assets/icons/icon-dog-park.png" width="25px" height="25px"> Mascotas en adopción</h3>
         <hr>
         <div *ngIf="!animales">
             <p>No existen resultados</p>
@@ -20,25 +20,28 @@
                             <div class="img-relleno"></div>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title text-capitalize">{{animal.nombre}}</h5>
+                            <h5 class="card-title text-capitalize" *ngIf="animal.tipo == '1'">
+                                <img src="../../../assets/icons/icon-dog-bone.png" width="20px" height="20px"> {{animal.nombre}}</h5>
+                            <h5 class="card-title text-capitalize" *ngIf="animal.tipo == '2'"> 
+                                <img src="../../../assets/icons/icon-fish-bone.png" width="25px" height="25px"> {{animal.nombre}}</h5>
                             <p class="card-text">Edad: {{animal.edad}}</p>
                             <p class="card-text">Sexo: {{animal.sexo}}</p>
                             <div class="row">
                                 <div class="col-6">
                                     <a [routerLink]="['/animal', animal.id]" class="btn btn-info btn-sm"><img
                                             style="width: 15px; height: 15px; margin: 0 5px 2px 0;"
-                                            src="../../../assets/icons/icon-eye.png" alt="">Ver</a>
+                                            src="../../../assets/icons/icon-eye.png" title="Ver">Ver</a>
                                 </div>
                                 <!-- [routerLink]="['/editar-animal', animal.id]" -->
                                 <div class="col-6 d-flex justify-content-end" *ngIf="admin">
                                     <a [routerLink]="['/editar-animal', animal.id]"
                                         class="btn btn-secondary btn-sm mr-2"><img
                                             style="width: 15px; margin-bottom: 2px;"
-                                            src="../../../assets/icons/icon-edit.png" alt=""></a>
+                                            src="../../../assets/icons/icon-edit.png" title="Editar"></a>
                                     <a (click)="borrarConfirm(animal.id)" data-toggle="modal"
                                         data-target="#staticBackdrop" class="btn btn-danger btn-sm"><img
                                             style="width: 15px; height: 15px; margin-bottom: 2px;"
-                                            src="../../../assets/icons/icon-delete-trash.png" alt=""></a>
+                                            src="../../../assets/icons/icon-delete-trash.png" title="Eliminar"></a>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +52,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Eliminar animal</h5>
+                                        <h5 class="modal-title" id="staticBackdropLabel"><img src="../../../assets/icons/icon-pet-delete.png" width="25px" height="25px"> Eliminar mascota</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
