@@ -79,4 +79,8 @@ export class RazasPerroComponent implements OnInit {
     );
   }
 
+  goBack() {
+    window.history.back();
+  }
+
 }

@@ -78,4 +78,8 @@ export class RazasGatoComponent implements OnInit {
     );
   }
 
+  goBack() {
+    window.history.back();
+  }
+
 }

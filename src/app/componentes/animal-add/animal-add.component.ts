@@ -98,4 +98,8 @@ export class AnimalAddComponent implements OnInit {
     this.filesToUpload = <Array<File>>fileInput.target.files;
     console.log(this.filesToUpload);
   }
+
+  goBack() {
+    window.history.back();
+  }
 }

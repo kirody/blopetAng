@@ -123,4 +123,8 @@ export class AnimalEditComponent implements OnInit {
     console.log(this.filesToUpload);
   }
 
+  goBack() {
+    window.history.back();
+  }
+
 }

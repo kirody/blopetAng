@@ -1,4 +1,5 @@
-<div class="container border shadow p-3 mb-5 bg-white rounded">
+<div class="container border shadow mb-5 mt-5 pb-5 pt-5 bg-white">
+    <span (click)="goBack()" class="backButton"><img src="../../../assets/icons/icon-back.png" width="25px" height="25px"></span>
     <h3 class="pb-3 text-info text-center"><img src="../../../assets/icons/icon-pet.png" width="25px" height="25px"> Editar esta mascota <img src="../../../assets/icons/icon-pet.png" width="25px" height="25px"></h3>
     <form #formAnimal="ngForm" (ngSubmit)="onSubmit()" id="form-animal">
         <div class="form-row">

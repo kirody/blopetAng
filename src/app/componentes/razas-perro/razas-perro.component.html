@@ -1,6 +1,9 @@
 <div class="fondo">
     <div class="container pt-3 pb-5">
-        <h3><img src="../../../assets/icons/icon-dog.png" width="25px" height="25px"> Perros en adopción</h3>
+        <div class="row">
+            <div class="col-11"><h3><img src="../../../assets/icons/icon-dog.png" width="25px" height="25px"> Perros en adopción</h3></div>
+            <div class="col-1"><span (click)="goBack()" class="backButton"><img src="../../../assets/icons/icon-back.png" width="25px" height="25px"></span></div>
+        </div>
         <hr>
         <div *ngIf="!animales">
             <p>No existen resultados</p>

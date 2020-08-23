@@ -53,3 +53,8 @@
         width: 20rem;
     }
  }
+
+ .backButton{
+    cursor: pointer;
+    margin-left: 40px;
+}

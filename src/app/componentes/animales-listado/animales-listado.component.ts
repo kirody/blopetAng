@@ -79,4 +79,8 @@ export class AnimalesListadoComponent implements OnInit {
     );
   }
 
+  goBack() {
+    window.history.back();
+  }
+
 }
