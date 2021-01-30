@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
+import { Title } from '@angular/platform-browser';
 //Servicios
 import { AnimalService } from 'src/app/servicios/animal.service';
 import { TipoAnimalService } from 'src/app/servicios/tipoAnimal.service';
@@ -12,6 +12,7 @@ import { RazaPerroService } from 'src/app/servicios/raza-perro.service';
 import { GLOBAL } from 'src/app/servicios/global';
 
 import { Animal } from 'src/app/models/animal';
+import { RazaGatoService } from 'src/app/servicios/raza-gato.service';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class AnimalAddComponent implements OnInit {
   public edades: any[] = [];
   public sexos: any[] = [];
   public razasPerro: any[] = [];
+  public razasGato: any[] = [];
 
   tipoSeleccionado: number = 0;
 
@@ -42,7 +44,9 @@ export class AnimalAddComponent implements OnInit {
     private _tamanioService: TamanioService,
     private _edadService: EdadService,
     private _sexoService: SexoService,
-    private _razaPerroService: RazaPerroService
+    private _razaPerroService: RazaPerroService,
+    private _razaGatoService: RazaGatoService,
+    private _titleService: Title
   ) {
     this.animal = new Animal(0,'','','','','','','','','','');
     this.tipoAnimal = _tipoAanimalService.getRazas();
@@ -51,10 +55,11 @@ export class AnimalAddComponent implements OnInit {
     this.edades = _edadService.getEdades();
     this.sexos = _sexoService.getSexos();
     this.razasPerro = _razaPerroService.getRazasPerro();
+    this.razasGato = _razaGatoService.getRazasGato();
   }
 
   ngOnInit(): void {
-    
+    this._titleService.setTitle('Blopet | Añadir mascota');
     console.log('animal-add.components.ts cargado');
   }
 
@@ -92,5 +97,9 @@ export class AnimalAddComponent implements OnInit {
   fileChangeEvent(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
     console.log(this.filesToUpload);
+  }
+
+  goBack() {
+    window.history.back();
   }
 }

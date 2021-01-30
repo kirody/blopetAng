@@ -1,0 +1,16 @@
+.fila-principal{
+    margin-top: 22vh;
+    margin-bottom: 22vh;
+    border-radius: 20px 0 0 20px;
+}
+
+.text-success{
+    font-size: 14px;
+}
+
+.background{
+    background-image: url("../../../../assets/images/dogs.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

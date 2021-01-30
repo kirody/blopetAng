@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
+import { Title } from '@angular/platform-browser';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { GLOBAL } from 'src/app/servicios/global';
 import { Usuario } from 'src/app/models/usuario';
@@ -12,16 +12,19 @@ import { Usuario } from 'src/app/models/usuario';
 })
 export class RegisterComponent implements OnInit {
   public usuario: Usuario;
+  exists: boolean = false;
   
   constructor(
     private _usuarioService: UsuarioService,
     private _route: ActivatedRoute,
     private _router: Router,
+    private _titleService: Title
   ) {
     this.usuario = new Usuario(0,'','','');
    }
 
   ngOnInit(): void {
+    this._titleService.setTitle('Blopet | Regístrate');
     console.log('register.components.ts cargado');
   }
 
@@ -31,6 +34,7 @@ export class RegisterComponent implements OnInit {
         if(response['code'] == 200){
           this._router.navigate(['/login']);
         }else{
+          this.onExists();
           console.log(response);
         }
       },
@@ -38,6 +42,13 @@ export class RegisterComponent implements OnInit {
         console.log(<any>error);
       }
     );
+  }
+
+  onExists(): void {
+    this.exists = true;
+    setTimeout(() => {
+      this.exists = false;
+    }, 4000);
   }
 
 }

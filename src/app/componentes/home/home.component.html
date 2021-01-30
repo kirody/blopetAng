@@ -1,18 +1,18 @@
-<header class="masthead text-white text-center">
-    <!--<div class="overlay"></div>-->
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-9 mx-auto">
-                <a class="img-fluid" href="#"><img class="blopet" src="../../../assets/images/blopet.png" alt=""
-                        width="35%"></a>
+    <header class="masthead text-white text-center">
+        <!--<div class="overlay"></div>-->
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <a class="img-fluid" href="#"><img class="blopet" src="../../../assets/images/blopet.png" alt=""
+                            width="35%"></a>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-9 mx-auto">
-                <h1 class="mb-5">Tu buscador de mascotas</h1>
-            </div>
-            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                <!--
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <h1 class="mb-5">Tu buscador de mascotas</h1>
+                </div>
+                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                    <!--
                 <form>
                     <div class="form-row">
                         <div class="col-12 col-md-9 mb-2 mb-md-0">
@@ -24,156 +24,158 @@
                     </div>
                 </form>
                 -->
-                <select [(ngModel)]="keyword" class="form-control selector text-capitalize">
-                    <option *ngFor="let item of keywords" [value]="item">{{item}}</option>
-                </select>
-                <div class="ng-autocomplete">
-                    <ng-autocomplete 
-                        [data]="data$"
-                        [searchKeyword]="keyword"
-                        placeHolder="Buscar..."
-                        (selected)='selectEvent($event)'
-                        (inputChanged)='onChangeSearch($event)'
-                        (inputFocused)='onFocused($event)'
-                        historyIdentifier="countries"
-                        [itemTemplate]="itemTemplate"
-                        [notFoundTemplate]="notFoundTemplate">                              
-                    </ng-autocomplete>
-                    
-                    <ng-template #itemTemplate let-item>
-                     <div *ngIf="keyword == 'nombre'">
-                        <a class="text-capitalize" [innerHTML]="item.nombre"></a>
-                     </div>
-                     <div *ngIf="keyword == 'edad'">
-                        <a class="text-capitalize" [innerHTML]="item.edad"></a>
-                     </div>
-                     <div *ngIf="keyword == 'sexo'">
-                        <a class="text-capitalize" [innerHTML]="item.sexo"></a>
-                     </div>
-                     <div *ngIf="keyword == 'raza'">
-                        <a class="text-capitalize" [innerHTML]="item.raza"></a>
-                     </div>
-                     <div *ngIf="keyword == 'provincia'">
-                        <a class="text-capitalize" [innerHTML]="item.provincia"></a>
-                     </div>
-                    </ng-template>     
-                     
-                    <ng-template #notFoundTemplate let-notFound>
-                    <div [innerHTML]="notFound"></div>
-                    </ng-template>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+                    <select [(ngModel)]="keyword" class="form-control selector text-capitalize">
+                        <option *ngFor="let item of keywords" [value]="item">{{item}}</option>
+                    </select>
+                    <div class="ng-autocomplete">
+                        <ng-autocomplete [data]="data$" [searchKeyword]="keyword" placeHolder="Buscar..."
+                            (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
+                            (inputFocused)='onFocused($event)' historyIdentifier="countries"
+                            [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+                        </ng-autocomplete>
 
-<!-- Icons Grid -->
-<section class="features-icons bg-light text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                    <div class="">
-                        <img class="" src="../../../assets/icons/icon-speed.png" alt="">
+                        <ng-template #itemTemplate let-item>
+                            <div *ngIf="keyword == 'nombre'">
+                                <a class="text-capitalize" [innerHTML]="item.nombre"></a>
+                            </div>
+                            <div *ngIf="keyword == 'edad'">
+                                <a class="text-capitalize" [innerHTML]="item.edad"></a>
+                            </div>
+                            <div *ngIf="keyword == 'sexo'">
+                                <a class="text-capitalize" [innerHTML]="item.sexo"></a>
+                            </div>
+                            <div *ngIf="keyword == 'raza'">
+                                <a class="text-capitalize" [innerHTML]="item.raza"></a>
+                            </div>
+                            <div *ngIf="keyword == 'provincia'">
+                                <a class="text-capitalize" [innerHTML]="item.provincia"></a>
+                            </div>
+                        </ng-template>
+
+                        <ng-template #notFoundTemplate let-notFound>
+                            <div [innerHTML]="notFound"></div>
+                        </ng-template>
                     </div>
-                    <h3 style="color: #206e7a;">Rápido</h3>
-                    <p class="lead mb-0">En tan solo dos clics conocerás a tu mascota ideal.</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                    <div class="">
-                        <img class="" src="../../../assets/icons/icon-list.png" alt="">
-                    </div>
-                    <h3 style="color: #206e7a;">Listado</h3>
-                    <p class="lead mb-0">Desde el menú puedes encontrar rapidamente un listado de provincias, razas y
-                        protectoras.
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-                    <div class="">
-                        <img class="" src="../../../assets/icons/icon-star.png" alt="">
-                    </div>
-                    <h3 style="color: #206e7a;">Favoritos</h3>
-                    <p class="lead mb-0">Añade tus posibles mascotas a 'Mi lista de favoritos' para consultarlos más
-                        tarde.</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </header>
 
-<!-- Image Showcases -->
-<section class="showcase">
-    <div class="container-fluid p-0">
-        <div class="row no-gutters">
-            <div class="col-lg-6 order-lg-2 text-white showcase-img"
-                style="background-image: url('../../../assets/images/bg-showcase-1.jpg');"></div>
-            <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                <h2>Fully Responsive Design</h2>
-                <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look
-                    great on
-                    any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Testimonials -->
-<section class="testimonials text-center bg-light">
-    <div class="container">
-        <h2 class="mb-5">What people are saying...</h2>
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                    <img class="img-fluid rounded-circle mb-3" src="../../../assets/images/testimonials-1.jpg" alt="">
-                    <h5>Margaret E.</h5>
-                    <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                    <img class="img-fluid rounded-circle mb-3" src="../../../assets/images/testimonials-2.jpg" alt="">
-                    <h5>Fred S.</h5>
-                    <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super
-                        nice
-                        landing pages."</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                    <img class="img-fluid rounded-circle mb-3" src="../../../assets/images/testimonials-3.jpg" alt="">
-                    <h5>Sarah W.</h5>
-                    <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Call to Action -->
-<section class="call-to-action text-white text-center">
-    <!--<div class="overlay"></div>-->
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-9 mx-auto">
-                <h2 class="mb-4">¡Adoptar siempre es la mejor opción!</h2>
-            </div>
-            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                <form>
-                    <div class="form-row">
-                        <div class="col-12 col-md-9 mb-2 mb-md-0">
-                            <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
+    <!-- Icons Grid -->
+    <section class="features-icons bg-light text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <div class="">
+                            <img class="" src="../../../assets/icons/icon-speed.png" alt="">
                         </div>
-                        <div class="col-12 col-md-3">
-                            <button type="submit" class="btn btn-block btn-lg btn-info">Susbcribirse!</button>
-                        </div>
+                        <h3 style="color: #206e7a;">Rápido</h3>
+                        <p class="lead mb-0">En tan solo dos clics conocerás a tu mascota ideal.</p>
                     </div>
-                </form>
+                </div>
+                <div class="col-lg-4">
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <div class="">
+                            <img class="" src="../../../assets/icons/icon-list.png" alt="">
+                        </div>
+                        <h3 style="color: #206e7a;">Listado</h3>
+                        <p class="lead mb-0">Desde el menú puedes encontrar rapidamente un listado de provincias, razas
+                            y
+                            protectoras.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                        <div class="">
+                            <img class="" src="../../../assets/icons/icon-star.png" alt="">
+                        </div>
+                        <h3 style="color: #206e7a;">Favoritos</h3>
+                        <p class="lead mb-0">Añade tus posibles mascotas a 'Mi lista de favoritos' para consultarlos más
+                            tarde.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- Image Showcases -->
+    <section class="showcase">
+        <div class="container-fluid p-0">
+            <div class="row no-gutters">
+                <div class="col-lg-6 order-lg-2 text-white showcase-img"
+                    style="background-image: url('../../../assets/images/bg-showcase-1.jpg');"></div>
+                <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                    <h2>Fully Responsive Design</h2>
+                    <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will
+                        look
+                        great on
+                        any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials text-center bg-light">
+        <div class="container">
+            <h2 class="mb-5">What people are saying...</h2>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                        <img class="img-fluid rounded-circle mb-3" src="../../../assets/images/testimonials-1.jpg"
+                            alt="">
+                        <h5>Margaret E.</h5>
+                        <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                        <img class="img-fluid rounded-circle mb-3" src="../../../assets/images/testimonials-2.jpg"
+                            alt="">
+                        <h5>Fred S.</h5>
+                        <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of
+                            super
+                            nice
+                            landing pages."</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                        <img class="img-fluid rounded-circle mb-3" src="../../../assets/images/testimonials-3.jpg"
+                            alt="">
+                        <h5>Sarah W.</h5>
+                        <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to
+                            us!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="call-to-action text-white text-center">
+        <!--<div class="overlay"></div>-->
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <h2 class="mb-4">¡Adoptar siempre es la mejor opción!</h2>
+                </div>
+                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                    <form>
+                        <div class="form-row">
+                            <div class="col-12 col-md-9 mb-2 mb-md-0">
+                                <input type="email" class="form-control form-control-lg"
+                                    placeholder="Enter your email...">
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <button type="submit" class="btn btn-block btn-lg btn-info">Susbcribirse!</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>

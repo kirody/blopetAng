@@ -6,11 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent implements OnInit {
-
+  public load: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
-    
+    setTimeout(() => {
+      this.load = true;
+    }, 1500);
   }
 
 }

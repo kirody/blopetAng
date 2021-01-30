@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
+import { Title } from '@angular/platform-browser';
 //Servicios
 import { AnimalService } from 'src/app/servicios/animal.service';
 import { TipoAnimalService } from 'src/app/servicios/tipoAnimal.service';
@@ -42,7 +42,8 @@ export class AnimalEditComponent implements OnInit {
     private _tamanioService: TamanioService,
     private _edadService: EdadService,
     private _sexoService: SexoService,
-    private _razaPerroService: RazaPerroService
+    private _razaPerroService: RazaPerroService,
+    private _titleService: Title
   ) {
     this.animal = new Animal(0,'','','','','','','','','','');
     this.tipoAnimal = _tipoAanimalService.getRazas();
@@ -55,6 +56,7 @@ export class AnimalEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._titleService.setTitle('Blopet | Editar mascota');
     console.log('Este animal-edit.component.ts cargado');
     this.getAnimal();
   }
@@ -119,6 +121,10 @@ export class AnimalEditComponent implements OnInit {
   fileChangeEvent(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
     console.log(this.filesToUpload);
+  }
+
+  goBack() {
+    window.history.back();
   }
 
 }

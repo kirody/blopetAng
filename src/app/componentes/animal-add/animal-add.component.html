@@ -1,5 +1,7 @@
-<div class="container border shadow p-3 mb-5 bg-white rounded">
-    <h3 class="mt-3">Añade un animal</h3>
+
+<div class="container border shadow mb-5 mt-5 pb-5 pt-5 bg-white">
+    <span (click)="goBack()" class="backButton"><img src="../../../assets/icons/icon-back.png" width="25px" height="25px"></span>
+    <h3 class="pb-3 text-info text-center"><img src="../../../assets/icons/icon-pet.png" width="25px" height="25px"> Añade una mascota <img src="../../../assets/icons/icon-pet.png" width="25px" height="25px"></h3>
     <form #formAnimal="ngForm" (ngSubmit)="onSubmit()" id="form-animal">
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -17,7 +19,7 @@
                     <span *ngIf="!edad.valid && edad.touched" class="badge badge-danger">Este campo no es
                         correcto</span>
                 </label>
-                <select #edad="ngModel" name="edad" [(ngModel)]="animal.edad" class="form-control">
+                <select #edad="ngModel" name="edad" [(ngModel)]="animal.edad" class="form-control" required>
                     <option selected value="">--Selecciona una opción</option>
                     <option *ngFor="let edad of edades">
                         {{edad.nomEdad}}
@@ -30,7 +32,7 @@
                     <span *ngIf="!tamanio.valid && tamanio.touched" class="badge badge-danger">Este campo es
                         obligatorio</span>
                 </label>
-                <select #tamanio="ngModel" name="tamanio" [(ngModel)]="animal.tamanio" class="form-control">
+                <select #tamanio="ngModel" name="tamanio" [(ngModel)]="animal.tamanio" class="form-control" required>
                     <option selected value="">--Selecciona una opción</option>
                     <option *ngFor="let tam of tamanios">
                         {{tam.nomTamanio}}
@@ -54,7 +56,11 @@
                 <input type="text" #vacunas="ngModel" name="vacunas" [(ngModel)]="animal.vacunas" class="form-control" placeholder="Enumeralas brevemente">
             </div>
             <div class="form-group col-md-6">
-                <label>Selecciona una provincia*</label>
+                <label>
+                    Selecciona una provincia*
+                    <span *ngIf="!provincia.valid && provincia.touched" class="badge badge-danger">Este campo es
+                        obligatorio</span>
+                </label>
                 <select #provincia="ngModel" name="provincia" [(ngModel)]="animal.provincia" class="form-control" required>
                     <option selected value="">--Selecciona una opción</option>
                     <option *ngFor="let prov of provincias">
@@ -63,7 +69,11 @@
                 </select>
             </div>
             <div class="form-group col-md-6">
-                <label>Tipo de animal doméstico*</label>
+                <label>
+                    Tipo de animal doméstico*
+                    <span *ngIf="!tipo.valid && tipo.touched" class="badge badge-danger">Este campo es
+                        obligatorio</span>
+                </label>
                 <select #tipo="ngModel" name="tipo" [(ngModel)]="tipoSeleccionado" [(ngModel)]="animal.tipo" class="form-control" required>
                     <option selected value="">--Selecciona una opción</option>
                     <option *ngFor="let type of tipoAnimal" [value]=type.id>
@@ -89,8 +99,9 @@
                 <div *ngIf="tipoSeleccionado == 2">
                     <select #raza="ngModel" name="raza" [(ngModel)]="animal.raza" class="form-control" required>
                         <option value="" selected>--Selecciona una raza de gato</option>
-                        <option>Siamés</option>
-                        <option>3</option>
+                        <option *ngFor="let razGa of razasGato">
+                            {{razGa.nomRaza}}
+                        </option>
                     </select>
                 </div>
             </div>
@@ -104,10 +115,10 @@
                     class="form-control" required placeholder="Escribe algo..."></textarea>
             </div>
             <div class="form-group col-md-6">
-                <label>Imagen*</label>
+                <label>Imagen</label>
                 <input type="file" class="form-control" (change)="fileChangeEvent($event)" required>
             </div>
         </div>
-        <button type="submit" [disabled]="!formAnimal.form.valid" class="btn btn-info mt-2 mb-5">Añadir</button>
+        <button type="submit" [disabled]="!formAnimal.form.valid" class="btn btn-info mt-2 mb-3 d-block mx-auto">Guardar</button>
     </form>
 </div>

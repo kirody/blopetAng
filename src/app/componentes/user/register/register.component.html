@@ -1,11 +1,14 @@
 <div id="login">
     <div class="container">
         <div id="login-row" class="row justify-content-center align-items-center">
-            <div id="login-column" class="col-md-6">
+            <div id="login-column" class="col-md-6 mt-5 mb-5 pt-5 pb-5">
                 <div id="login-box" class="col-md-12">
                     <form #formRegister="ngForm" (ngSubmit)="onSubmit()" id="form-register" class="form" action=""
                         method="post">
-                        <h3 class="text-center text-info pb-4">Regístrate</h3>
+                        <h3 class="text-center text-info pb-2">Regístrate</h3>
+                        <div class="alert alert-danger" role="alert" *ngIf="exists">
+                            Parece que este email ya está registrado. Inténtelo de nuevo.
+                        </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-1"></div>
@@ -85,9 +88,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group mt-3 text-center">
+                        <div class="form-group text-center">
                             <button type="submit" [disabled]="!formRegister.form.valid"
-                                class="btn btn-info mt-2 mb-5">Registrarse</button>
+                                class="btn btn-info mt-2">Registrarse</button>
                         </div>
                     </form>
                 </div>
