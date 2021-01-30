@@ -1,9 +1,20 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpResponse, HttpRequest, XhrFactory } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
+import { GLOBAL } from './global';
 @Injectable({
   providedIn: 'root'
 })
 export class ProvinciaService {
+  public url: string;
+
+  constructor(
+    public httpClient: HttpClient
+  ) {
+    this.url = GLOBAL.url;
+   }
+
   public provincias = [
     { id: 1, nomProvincia: "Álava" },
     { id: 2, nomProvincia: "Albacete" },
@@ -50,7 +61,9 @@ export class ProvinciaService {
     { id: 43, nomProvincia: "Soria" }
   ];
 
-  constructor() { }
+  getProvincia() : Observable<any>{
+    return this.httpClient.get(this.url+'provincias');
+  }
 
   getProvincias(){
     return this.provincias;

@@ -18,7 +18,9 @@ export class RazasGatoComponent implements OnInit {
   email: any;
   admin: boolean = false;
   pageActual: number = 1;
-
+  botonLista: string;
+  iconoLista: string;
+  isLista: boolean;
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
@@ -37,6 +39,8 @@ export class RazasGatoComponent implements OnInit {
         this.admin = true;
       }
     }
+    this.botonLista = 'Vista lista';
+    this.iconoLista = '../../../assets/icons/icon-list.png';
   }
 
   getRazasGato() {
@@ -82,4 +86,14 @@ export class RazasGatoComponent implements OnInit {
     window.history.back();
   }
 
+  clickBotonLista() {
+    this.isLista = !this.isLista;
+    if (this.isLista) {
+      this.botonLista = 'Vista cuadrícula';
+      this.iconoLista = '../../../assets/icons/icon-mosaic.png'
+    }else {
+      this.botonLista = 'Vista lista';
+      this.iconoLista = '../../../assets/icons/icon-list.png';
+    }
+  }
 }

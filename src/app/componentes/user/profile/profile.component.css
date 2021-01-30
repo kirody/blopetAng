@@ -1,7 +1,7 @@
 .fila-principal{
     margin-top: 22vh;
     margin-bottom: 22vh;
-    border-radius: 20px 0 0 20px;
+    border-radius: 6px;
 }
 
 .text-success{
@@ -13,4 +13,5 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 6px 0 0 6px;
 }

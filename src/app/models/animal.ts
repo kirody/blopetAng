@@ -10,6 +10,9 @@ export class Animal{
         public provincia: string,
         public tipo: string,
         public raza: string,
-        public imagen: string
+        public imagen: string,
+        public protectora: string,
+        public emailProtectora: string,
+        public fecha: string
     ){}
 }

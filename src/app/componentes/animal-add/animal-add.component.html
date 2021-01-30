@@ -1,11 +1,11 @@
 
 <div class="container border shadow mb-5 mt-5 pb-5 pt-5 bg-white">
     <span (click)="goBack()" class="backButton"><img src="../../../assets/icons/icon-back.png" width="25px" height="25px"></span>
-    <h3 class="pb-3 text-info text-center"><img src="../../../assets/icons/icon-pet.png" width="25px" height="25px"> Añade una mascota <img src="../../../assets/icons/icon-pet.png" width="25px" height="25px"></h3>
-    <form #formAnimal="ngForm" (ngSubmit)="onSubmit()" id="form-animal">
+    <h3 class="mb-5 text-info text-center"><img src="../../../assets/icons/icon-pet.png" width="25px" height="25px"> Añade una mascota <img src="../../../assets/icons/icon-pet.png" width="25px" height="25px"></h3>
+    <form #formAnimal="ngForm" (ngSubmit)="onSubmit()" id="form-animal" class="pr-5 pl-5">
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label>
+            <div class="form-group col-md-4">
+                <label class="font-weight-bold">
                     Nombre*
                     <span *ngIf="!nombre.valid && nombre.touched" class="badge badge-danger">Este campo es
                         obligatorio</span>
@@ -13,8 +13,8 @@
                 <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="animal.nombre" class="form-control"
                     required placeholder="Nombre mascota...">
             </div>
-            <div class="form-group col-md-6">
-                <label>
+            <div class="form-group col-md-4">
+                <label class="font-weight-bold">
                     Edad*
                     <span *ngIf="!edad.valid && edad.touched" class="badge badge-danger">Este campo no es
                         correcto</span>
@@ -26,8 +26,8 @@
                     </option>
                 </select>
             </div>
-            <div class="form-group col-md-6">
-                <label>
+            <div class="form-group col-md-4">
+                <label class="font-weight-bold">
                     Tamaño*
                     <span *ngIf="!tamanio.valid && tamanio.touched" class="badge badge-danger">Este campo es
                         obligatorio</span>
@@ -39,8 +39,8 @@
                     </option>
                 </select>
             </div>
-            <div class="form-group col-md-6">
-                <label>
+            <div class="form-group col-md-4">
+                <label class="font-weight-bold">
                     Sexo*
                     <span *ngIf="!sexo.valid && sexo.touched" class="badge badge-danger">Este campo es
                         obligatorio</span>
@@ -51,26 +51,23 @@
                         {{sex.nomSexo}}
                 </select>
             </div>
-            <div class="form-group col-md-6">
-                <label>Vacunas</label>
+            <div class="form-group col-md-4">
+                <label class="font-weight-bold">Vacunas</label>
                 <input type="text" #vacunas="ngModel" name="vacunas" [(ngModel)]="animal.vacunas" class="form-control" placeholder="Enumeralas brevemente">
             </div>
-            <div class="form-group col-md-6">
-                <label>
-                    Selecciona una provincia*
-                    <span *ngIf="!provincia.valid && provincia.touched" class="badge badge-danger">Este campo es
+            <!-- <div class="col-md-1"></div> -->
+            <div class="form-group col-md-4">
+                <label class="font-weight-bold">
+                    Descripción*
+                    <span *ngIf="!descripcion.valid && descripcion.touched" class="badge badge-danger">Este campo es
                         obligatorio</span>
                 </label>
-                <select #provincia="ngModel" name="provincia" [(ngModel)]="animal.provincia" class="form-control" required>
-                    <option selected value="">--Selecciona una opción</option>
-                    <option *ngFor="let prov of provincias">
-                        {{prov.nomProvincia}}
-                    </option>
-                </select>
+                <textarea #descripcion="ngModel" name="descripcion" [(ngModel)]="animal.descripcion"
+                    class="form-control" required placeholder="Escribe algo breve..."></textarea>
             </div>
-            <div class="form-group col-md-6">
-                <label>
-                    Tipo de animal doméstico*
+            <div class="form-group col-md-4">
+                <label class="font-weight-bold">
+                    Animal doméstico*
                     <span *ngIf="!tipo.valid && tipo.touched" class="badge badge-danger">Este campo es
                         obligatorio</span>
                 </label>
@@ -81,8 +78,8 @@
                     </option>
                 </select>
             </div>
-            <div class="form-group col-md-6">
-                <label>Raza*</label>
+            <div class="form-group col-md-4">
+                <label class="font-weight-bold">Raza*</label>
                 <div *ngIf="tipoSeleccionado == 0">
                     <select #raza="ngModel" name="raza" [(ngModel)]="animal.raza" class="form-control" disabled>
                         <option value="" selected>--Selecciona un tipo animal doméstico</option>
@@ -105,20 +102,48 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group col-md-6">
-                <label>
-                    Descripción*
-                    <span *ngIf="!descripcion.valid && descripcion.touched" class="badge badge-danger">Este campo es
+            <div class="form-group col-md-4">
+                <label class="font-weight-bold">
+                    Provincia*
+                    <span *ngIf="!provincia.valid && provincia.touched" class="badge badge-danger">Este campo es
                         obligatorio</span>
                 </label>
-                <textarea #descripcion="ngModel" name="descripcion" [(ngModel)]="animal.descripcion"
-                    class="form-control" required placeholder="Escribe algo..."></textarea>
+                <select #provincia="ngModel" name="provincia" [(ngModel)]="animal.provincia" class="form-control" required>
+                    <option selected value="">--Selecciona una opción</option>
+                    <option *ngFor="let prov of provincias">
+                        {{prov.nomProvincia}}
+                    </option>
+                </select>
             </div>
             <div class="form-group col-md-6">
-                <label>Imagen</label>
+                <label class="font-weight-bold">Imagen</label>
                 <input type="file" class="form-control" (change)="fileChangeEvent($event)" required>
             </div>
+            <div class="form-group col-md-6"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-8 mt-4 mb-4 border-bottom"></div>
+            <div class="col-md-2"></div>
+            <div class="form-group col-md-6">
+                <label class="font-weight-bold">
+                    Protectora*
+                    <span *ngIf="!protectora.valid && protectora.touched" class="badge badge-danger">Este campo es
+                        obligatorio</span>
+                </label>
+                <input type="text" #protectora="ngModel" name="protectora" [(ngModel)]="animal.protectora" class="form-control"
+                    required placeholder="Nombre protectora...">
+            </div>
+            <div class="form-group col-md-6">
+                <label class="font-weight-bold">
+                    Email Protectora*
+                    <span *ngIf="!emailProtectora.valid && emailProtectora.touched" class="badge badge-danger">Este campo es
+                        obligatorio</span>
+                </label>
+                <input type="email" #emailProtectora="ngModel" name="emailProtectora" [(ngModel)]="animal.emailProtectora" class="form-control" placeholder="Introduzca email de la protectora..." required>
+            </div>
+            <div class="form-group col-md-6 d-none">
+                <input type="text" #fecha="ngModel" name="fecha" [(ngModel)]="animal.fecha" class="form-control">
+            </div>
         </div>
-        <button type="submit" [disabled]="!formAnimal.form.valid" class="btn btn-info mt-2 mb-3 d-block mx-auto">Guardar</button>
+        <button type="submit" [disabled]="!formAnimal.form.valid" class="btn btn-info mt-3">Guardar</button>
     </form>
 </div>

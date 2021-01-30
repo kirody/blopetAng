@@ -15,9 +15,12 @@ export class AnimalesListadoComponent implements OnInit {
   public numAnimales: number;
   public confirmado;
   pageActual: number = 1;
+  botonLista: string;
+  iconoLista: string;
 
   email: any;
   admin: boolean = false;
+  isLista: boolean;
 
   constructor(
     private _route: ActivatedRoute,
@@ -38,6 +41,8 @@ export class AnimalesListadoComponent implements OnInit {
         this.admin = true;
       }
     }
+    this.botonLista = 'Vista lista';
+    this.iconoLista = '../../../assets/icons/icon-list.png';
   }
 
   getAnimales() {
@@ -83,4 +88,14 @@ export class AnimalesListadoComponent implements OnInit {
     window.history.back();
   }
 
+  clickBotonLista() {
+    this.isLista = !this.isLista;
+    if (this.isLista) {
+      this.botonLista = 'Vista cuadrícula';
+      this.iconoLista = '../../../assets/icons/icon-mosaic.png'
+    }else {
+      this.botonLista = 'Vista lista';
+      this.iconoLista = '../../../assets/icons/icon-list.png';
+    }
+  }
 }

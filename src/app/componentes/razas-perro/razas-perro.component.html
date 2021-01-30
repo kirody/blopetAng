@@ -1,19 +1,40 @@
 <div class="fondo">
     <div class="container pt-3 pb-5">
-        <div class="row">
-            <div class="col-11"><h3><img src="../../../assets/icons/icon-dog.png" width="25px" height="25px"> Perros en adopción</h3></div>
-            <div class="col-1"><span (click)="goBack()" class="backButton"><img src="../../../assets/icons/icon-back.png" width="25px" height="25px"></span></div>
+        <div class="row pb-3">
+            <div class="col-9">
+                <h3><img src="../../../assets/icons/icon-dog-park.png" width="25px" height="25px"> Perros en adopción</h3>
+            </div>
+            <div class="col-2 d-flex justify-content-end align-items-center">
+                <span class="lista border-end" (click)="clickBotonLista()" *ngIf="admin">
+                    <img style="width: 16px; margin-right: 3px;" src="{{iconoLista}}">{{botonLista}}
+                </span>
+            </div>
+            <div class="col-1 d-flex justify-content-end align-items-center">
+                <span (click)="goBack()" class="backButton">
+                    <img src="../../../assets/icons/icon-back.png" width="25px" height="25px">
+                </span>  
+            </div> 
         </div>
-        <hr>
-        <div *ngIf="!animales">
-            <p>No existen resultados</p>
+        <div class="row">
+            <div class="col">
+                <div *ngIf="!animales">
+                    <p>No existen resultados</p>
+                </div>
+            </div>
         </div>
         <div *ngIf="animales">
-            <h6><span class="badge badge-secondary">Numero de registros: {{numAnimales}}</span></h6>
-            <div class="row ">
-                <div *ngFor="let animal of animales | paginate: {itemsPerPage: 7, currentPage: pageActual}"
-                    class="col-md-3 d-flex justify-content-center">
-                    <div class="card mb-3 shadow">
+            <div class="row border-bottom pb-1 mb-3 mt-3" *ngIf="isLista">
+                <div class="col-1 fontSize-10">Nombre</div>
+                <div class="col-2 fontSize-10">Edad</div>
+                <div class="col-3 fontSize-10">Tamaño</div>
+                <div class="col-1 fontSize-10">Sexo</div>
+                <div class="col-2 fontSize-10">Provincia</div>
+                <div class="col-2 fontSize-10">Raza</div>
+                <div class="col-1 fontSize-10">Acciones</div>
+            </div>
+            <div [ngClass]="{'flex-column': isLista, 'row': !isLista}">
+                <div *ngFor="let animal of animales | paginate: {itemsPerPage: 8, currentPage: pageActual}" [ngClass]="{'col-md-3 justify-content-center d-flex': !isLista}">
+                    <div class="card mb-3 shadow" *ngIf="!isLista">
                         <div *ngIf="animal.imagen" class="img-container">
                             <a [routerLink]="['/animal', animal.id]"><img
                                     src="http://localhost:8080/Angular/blopet/uploads/{{animal.imagen}}"
@@ -24,59 +45,115 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title text-capitalize" *ngIf="animal.tipo == '1'">
-                                <img src="../../../assets/icons/icon-dog-bone.png" width="20px" height="20px"> {{animal.nombre}}</h5>
+                                <img src="../../../assets/icons/icon-dog-sit.png" width="22px" height="22px"> {{animal.nombre}}</h5>
                             <h5 class="card-title text-capitalize" *ngIf="animal.tipo == '2'"> 
-                                <img src="../../../assets/icons/icon-fish-bone.png" width="25px" height="25px"> {{animal.nombre}}</h5>
-                            <p class="card-text">Edad: {{animal.edad}}</p>
-                            <p class="card-text">Sexo: {{animal.sexo}}</p>
+                                <img src="../../../assets/icons/icon-cat-head.png" width="20px" height="20px"> {{animal.nombre}}</h5>
+                            <span class=""><b>Raza:</b> {{animal.raza}}</span><br>
+                            <span class="card-text"><b>Sexo:</b> {{animal.sexo}}</span><br>
+                            <span class="card-text"><b>Provincia:</b> {{animal.provincia}}</span><br><br>
                             <div class="row">
                                 <div class="col-6">
                                     <a [routerLink]="['/animal', animal.id]" class="btn btn-info btn-sm"><img
                                             style="width: 15px; height: 15px; margin: 0 5px 2px 0;"
-                                            src="../../../assets/icons/icon-eye.png" alt="">Ver</a>
+                                            src="../../../assets/icons/icon-eye.png" title="Ver">Ver</a>
                                 </div>
                                 <!-- [routerLink]="['/editar-animal', animal.id]" -->
                                 <div class="col-6 d-flex justify-content-end" *ngIf="admin">
                                     <a [routerLink]="['/editar-animal', animal.id]"
                                         class="btn btn-secondary btn-sm mr-2"><img
                                             style="width: 15px; margin-bottom: 2px;"
-                                            src="../../../assets/icons/icon-edit.png" alt=""></a>
+                                            src="../../../assets/icons/icon-edit.png" title="Editar"></a>
                                     <a (click)="borrarConfirm(animal.id)" data-toggle="modal"
                                         data-target="#staticBackdrop" class="btn btn-danger btn-sm"><img
                                             style="width: 15px; height: 15px; margin-bottom: 2px;"
-                                            src="../../../assets/icons/icon-delete-trash.png" alt=""></a>
+                                            src="../../../assets/icons/icon-delete-trash.png" title="Eliminar"></a>
+                                </div>
+                                <div class="col-6 d-flex justify-content-end" *ngIf="!admin">
+                                    <a  class="btn btn-warning btn-sm"><img
+                                        style="width: 15px; height: 15px; margin-bottom: 2px;"
+                                        src="../../../assets/icons/icon-star-button.png" title="Favoritos"></a>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                    <!-- Vista en lista -->
+                    <div class="row border-bottom rounded shadow-sm mb-2 padding" *ngIf="isLista && admin">
+                        <div class="col-1">{{animal.nombre}}</div>
+                        <div class="col-2">{{animal.edad}}</div>
+                        <div class="col-3">{{animal.tamanio}}</div>
+                        <div class="col-1">{{animal.sexo}}</div>
+                        <div class="col-2">{{animal.provincia}}</div>
+                        <div class="col-2">{{animal.raza}}</div>
+                        <div class="col-1 border-left justify-content-end">
+                            <div class="d-flex" *ngIf="admin">
+                                <a [routerLink]="['/editar-animal', animal.id]"
+                                    class="btn btn-secondary btn-sm mr-2"><img
+                                        style="width: 15px; margin-bottom: 2px;"
+                                        src="../../../assets/icons/icon-edit.png" title="Editar"></a>
+                                <a (click)="borrarConfirm(animal.id)" data-toggle="modal"
+                                    data-target="#staticBackdrop" class="btn btn-danger btn-sm"><img
+                                        style="width: 15px; height: 15px; margin-bottom: 2px;"
+                                        src="../../../assets/icons/icon-delete-trash.png" title="Eliminar"></a>
+                            </div>
+                        </div>
+                        <!-- Desplegable -->
+                        <div class="container">
+                            <div role="tab" [id]="'heading' + animal.id">
+                                <a class="masDetalles" role="button" data-toggle="collapse" [href]="'#collapse' + animal.id" aria-expanded="true" [attr.aria-controls]="'collapse'+animal.id">
+                                    <img src="../../../assets/icons/icon-down-arrow.png" width="15px" height="15px">     
+                                    Más detalles
+                                </a>
+                            </div>
+                            <div class="container" [id]="'collapse' + animal.id" class="collapse" role="tabpanel" [attr.aria-labelledby]="'heading' + animal.id">
+                                <hr>
+                                <div class="row p-2 fondoMasDetalles">
+                                    <div class="col-2">
+                                        <img src="http://localhost:8080/Angular/blopet/uploads/{{animal.imagen}}"
+                                            width="80%" alt="...">
+                                    </div>
+                                    <div class="col-10">
+                                        <p><strong> Identificador:</strong> {{animal.id}}</p>
+                                        <p><strong> Descripcion:</strong> {{animal.descripcion}}</p>
+                                        <p><strong> Vacunas:</strong> {{animal.vacunas}}</p>
+                                        <p><strong> Protectora:</strong> {{animal.protectora}}</p>
+                                        <p><strong> Email protectora:</strong> {{animal.emailProtectora}}</p>
+                                        <p><strong> Fecha de actual:</strong> {{animal.fecha | date:'dd/MM/yyyy'}}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Modal Confirmar elminar animal -->
-                        <div *ngIf="confirmado == animal.id" class="modal fade" id="staticBackdrop"
-                            data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
-                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Eliminar animal</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        ¿Estás seguro/a de que deseas eliminar este animal?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button (click)="onDeleteAnimal(animal.id)" type="button" class="btn btn-danger"
-                                            data-dismiss="modal">Eliminar</button>
-                                        <button (click)="cancelarConfirm()" type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Cancelar</button>
-                                    </div>
-                                </div>
+                        <!-- Fin Desplegable -->
+                    </div>
+                    <!-- Modal Confirmar elminar animal -->
+                    <div *ngIf="confirmado == animal.id" class="modal fade" id="staticBackdrop"
+                    data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel"><img src="../../../assets/icons/icon-pet-delete.png" width="25px" height="25px"> Eliminar mascota</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ¿Estás seguro/a de que deseas eliminar este animal?
+                            </div>
+                            <div class="modal-footer">
+                                <button (click)="onDeleteAnimal(animal.id)" type="button" class="btn btn-danger"
+                                    data-dismiss="modal">Eliminar</button>
+                                <button (click)="cancelarConfirm()" type="button" class="btn btn-secondary"
+                                    data-dismiss="modal">Cancelar</button>
                             </div>
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
+            <h6><span class="badge badge-secondary">Registros: {{numAnimales}}</span></h6>
         </div>
         <pagination-controls class="my-pagination" (pageChange)="pageActual = $event" previousLabel="Anterior"
-            nextLabel="Siguiente"></pagination-controls>
+            nextLabel="Siguiente">
+        </pagination-controls>
     </div>
 </div>

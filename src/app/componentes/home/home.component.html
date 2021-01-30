@@ -1,65 +1,47 @@
-    <header class="masthead text-white text-center">
-        <!--<div class="overlay"></div>-->
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-9 mx-auto">
-                    <a class="img-fluid" href="#"><img class="blopet" src="../../../assets/images/blopet.png" alt=""
-                            width="35%"></a>
-                </div>
+<header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 justify-content-center align-self-center">
+                <a class="img-fluid" href="#"><img class="blopet" src="../../../assets/images/blopet.png" alt=""
+                        width="55%"></a>
+                <h2 class="mt-4">Encuentra a tu <span class="text-info">mascota</span> ideal</h2>
             </div>
-            <div class="row">
-                <div class="col-xl-9 mx-auto">
-                    <h1 class="mb-5">Tu buscador de mascotas</h1>
-                </div>
-                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                    <!--
-                <form>
-                    <div class="form-row">
-                        <div class="col-12 col-md-9 mb-2 mb-md-0">
-                            <input type="text" class="form-control form-control-lg" placeholder="Buscar...">
+            <div class="col-6 lineaVertical">
+                <div class="cards d-inline-flex flex-wrap ml-4">
+                    <a class="link" [routerLink]="['/animales']">
+                        <div class="content-card" id="adopcion">
+                            <span class="badge badge-info float-left">En adopción</span>
                         </div>
-                        <div class="col-12 col-md-3">
-                            <button type="#" class="btn btn-block btn-lg btn-info">Buscar</button>
+                    </a>
+                    <a class="link" [routerLink]="['/razas-perros']">
+                        <div class="content-card" id="perros">
+                            <span class="badge badge-info float-left">Perros</span>
                         </div>
-                    </div>
-                </form>
-                -->
-                    <select [(ngModel)]="keyword" class="form-control selector text-capitalize">
-                        <option *ngFor="let item of keywords" [value]="item">{{item}}</option>
-                    </select>
-                    <div class="ng-autocomplete">
-                        <ng-autocomplete [data]="data$" [searchKeyword]="keyword" placeHolder="Buscar..."
-                            (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
-                            (inputFocused)='onFocused($event)' historyIdentifier="countries"
-                            [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
-                        </ng-autocomplete>
-
-                        <ng-template #itemTemplate let-item>
-                            <div *ngIf="keyword == 'nombre'">
-                                <a class="text-capitalize" [innerHTML]="item.nombre"></a>
-                            </div>
-                            <div *ngIf="keyword == 'edad'">
-                                <a class="text-capitalize" [innerHTML]="item.edad"></a>
-                            </div>
-                            <div *ngIf="keyword == 'sexo'">
-                                <a class="text-capitalize" [innerHTML]="item.sexo"></a>
-                            </div>
-                            <div *ngIf="keyword == 'raza'">
-                                <a class="text-capitalize" [innerHTML]="item.raza"></a>
-                            </div>
-                            <div *ngIf="keyword == 'provincia'">
-                                <a class="text-capitalize" [innerHTML]="item.provincia"></a>
-                            </div>
-                        </ng-template>
-
-                        <ng-template #notFoundTemplate let-notFound>
-                            <div [innerHTML]="notFound"></div>
-                        </ng-template>
+                    </a>
+                    <a class="link" [routerLink]="['/razas-gatos']">
+                        <div class="content-card" id="gatos">
+                            <span class="badge badge-info float-left">Gatos</span>
+                        </div>
+                    </a>
+                    <a class="link" [routerLink]="['/razas-gatos']">
+                        <div class="content-card" id="protectoras">
+                            <span class="badge badge-info float-left">Protectoras</span>
+                        </div>
+                    </a>
+                    <a class="link" [routerLink]="['/provincias']">
+                        <div class="content-card" id="provincias">
+                            <span class="badge badge-info float-left">Provincias</span>
+                        </div>
+                    </a>
+                    <div class="content-card0 d-flex align-items-center">
+                        <span class="text-info">Elige por categorias</span>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
     <!-- Icons Grid -->
     <section class="features-icons bg-light text-center">

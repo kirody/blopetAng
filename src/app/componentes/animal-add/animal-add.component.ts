@@ -32,9 +32,9 @@ export class AnimalAddComponent implements OnInit {
   public sexos: any[] = [];
   public razasPerro: any[] = [];
   public razasGato: any[] = [];
-
   tipoSeleccionado: number = 0;
 
+  fechaActual = new Date();
   constructor(
     private _animalService: AnimalService,
     private _route: ActivatedRoute,
@@ -48,7 +48,7 @@ export class AnimalAddComponent implements OnInit {
     private _razaGatoService: RazaGatoService,
     private _titleService: Title
   ) {
-    this.animal = new Animal(0,'','','','','','','','','','');
+    this.animal = new Animal(0,'','','','','','','','','','','','','');
     this.tipoAnimal = _tipoAanimalService.getRazas();
     this.provincias = _provinciaService.getProvincias();
     this.tamanios = _tamanioService.getTamanios();
@@ -61,6 +61,8 @@ export class AnimalAddComponent implements OnInit {
   ngOnInit(): void {
     this._titleService.setTitle('Blopet | Añadir mascota');
     console.log('animal-add.components.ts cargado');
+    this.animal.fecha = this.fechaActual.toString();
+    console.log(this.fechaActual.toString())
   }
 
   onSubmit() {

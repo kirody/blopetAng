@@ -43,4 +43,8 @@ export class AnimalDetailComponent implements OnInit {
       );
     });
   }
+
+  goBack() {
+    window.history.back();
+  }
 }

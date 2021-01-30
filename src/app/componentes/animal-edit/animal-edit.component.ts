@@ -45,7 +45,7 @@ export class AnimalEditComponent implements OnInit {
     private _razaPerroService: RazaPerroService,
     private _titleService: Title
   ) {
-    this.animal = new Animal(0,'','','','','','','','','','');
+    this.animal = new Animal(0,'','','','','','','','','','','','','');
     this.tipoAnimal = _tipoAanimalService.getRazas();
     this.provincias = _provinciaService.getProvincias();
     this.tamanios = _tamanioService.getTamanios();

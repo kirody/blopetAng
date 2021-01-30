@@ -6,13 +6,7 @@
     </button>
     <div class="collapse navbar-collapse mr-4" id="navbarNav">
         <ul class="navbar-nav ml-3 ml-auto">
-            <div *ngIf="!admin">
-                <li class="nav-item3">
-                    <a class="nav-link" href="#" [routerLink]="['/animales']" [routerLinkActive]="['activado']">Listado
-                        mascotas</a>
-                </li>
-            </div>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="#" [routerLink]="['/home']">Provincias</a>
             </li>
             <li class="nav-item">
@@ -21,14 +15,18 @@
             </li>
             <li class="nav-item mr-3">
                 <a class="nav-link" href="#" [routerLink]="['/razas-gatos']" [routerLinkActive]="['activado']">Gatos</a>
-            </li>
-
+            </li> -->
             <div *ngIf="login">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                    <button *ngIf="!admin" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false"><img style="width: 18px;"
                             src="" alt="">
                         Cuenta
+                    </button>
+                    <button *ngIf="admin" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"><img style="width: 18px;"
+                            src="" alt="">
+                        Admin
                     </button>
                     <div class="dropdown-menu">
                         <a class="dropdown-item disabled text-capitalize" href="#">Hola,

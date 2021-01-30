@@ -18,11 +18,14 @@ export class RazasPerroComponent implements OnInit {
   email: any;
   admin: boolean = false;
   pageActual: number = 1;
+  botonLista: string;
+  iconoLista: string;
+  isLista: boolean;
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _razasGatoService: RazaPerroService,
+    private _razasPerroService: RazaPerroService,
     private _animalService: AnimalService,
     private _localStorage: LocalstorageService,
     private _titleService: Title
@@ -38,10 +41,12 @@ export class RazasPerroComponent implements OnInit {
         this.admin = true;
       }
     }
+    this.botonLista = 'Vista lista';
+    this.iconoLista = '../../../assets/icons/icon-list.png';
   }
 
   getRazasPerro() {
-    this._razasGatoService.getRazaPerro().subscribe(
+    this._razasPerroService.getRazaPerro().subscribe(
       resultado => {
         if (resultado['code'] != 200) {
           console.log(resultado);
@@ -83,4 +88,14 @@ export class RazasPerroComponent implements OnInit {
     window.history.back();
   }
 
+  clickBotonLista() {
+    this.isLista = !this.isLista;
+    if (this.isLista) {
+      this.botonLista = 'Vista cuadrícula';
+      this.iconoLista = '../../../assets/icons/icon-mosaic.png'
+    }else {
+      this.botonLista = 'Vista lista';
+      this.iconoLista = '../../../assets/icons/icon-list.png';
+    }
+  }
 }

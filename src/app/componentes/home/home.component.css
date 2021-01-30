@@ -43,8 +43,8 @@
   
   @media (min-width: 768px) {
     header.masthead {
-      padding-top: 12rem;
-      padding-bottom: 12rem;
+      padding-top: 10rem;
+      padding-bottom: 10rem;
     }
     header.masthead h1 {
       font-size: 3rem;
@@ -135,4 +135,107 @@
 .selector{
   width: 40%;
   margin: auto;
+}
+
+.content-card{
+  width: 130px;
+  height: 130px;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 0 15px 15px 0;
+}
+
+.content-card0{
+  width: 130px;
+  height: 130px;
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 0 15px 15px 0;
+}
+
+a, .link{
+  text-decoration: none;
+}
+
+.badge{
+  font-size: 90%;
+}
+
+.icono-card{
+  width: 68px;
+}
+/* ---------------------------------------------------------------------- */
+#perros{
+  background: url("../../../assets/icons/icon-dog-home2.png") no-repeat;
+  background-color: #17a2b8;
+  background-size: 68px;
+  background-position: center;
+}
+
+#perros:hover{
+  background: url("../../../assets/icons/icon-dog-home1.png") no-repeat;
+  background-color: white;
+  background-size: 68px;
+  background-position: center;
+}
+/* ---------------------------------------------------------------------- */
+#gatos{
+  background: url("../../../assets/icons/icon-cat-home2.png") no-repeat;
+  background-color: #17a2b8;
+  background-size: 50px;
+  background-position: 50% 65%;
+}
+
+#gatos:hover{
+  background: url("../../../assets/icons/icon-cat-home1.png") no-repeat;
+  background-color: white;
+  background-size: 50px;
+  background-position: 50% 65%;
+}
+/* ---------------------------------------------------------------------- */
+#provincias{
+  background: url("../../../assets/icons/icon-marker1.png") no-repeat;
+  background-color: #17a2b8;
+  background-size: 52px;
+  background-position: 50% 62%;
+}
+
+#provincias:hover{
+  background: url("../../../assets/icons/icon-marker2.png") no-repeat;
+  background-color: white;
+  background-size: 52px;
+  background-position: 50% 62%;
+}
+/* ---------------------------------------------------------------------- */
+#protectoras{
+  background: url("../../../assets/icons/icon-house-1.png") no-repeat;
+  background-color: #17a2b8;
+  background-size: 52px;
+  background-position: 50% 60%;
+}
+
+#protectoras:hover{
+  background: url("../../../assets/icons/icon-house-2.png") no-repeat;
+  background-color: white;
+  background-size: 52px;
+  background-position: 50% 60%;
+}
+/* ---------------------------------------------------------------------- */
+#adopcion{
+  background: url("../../../assets/icons/icon-pet-bone1.png") no-repeat;
+  background-color: #17a2b8;
+  background-size: 52px;
+  background-position: 50% 60%;
+}
+
+#adopcion:hover{
+  background: url("../../../assets/icons/icon-pet-bone2.png") no-repeat;
+  background-color: white;
+  background-size: 52px;
+  background-position: 50% 60%;
+}
+
+.lineaVertical{
+  border-left: 2px solid white;
 }

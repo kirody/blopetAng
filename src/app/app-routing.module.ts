@@ -11,6 +11,7 @@ import { RegisterComponent } from './componentes/user/register/register.componen
 import { RazasGatoComponent } from './componentes/razas-gato/razas-gato.component';
 import { RazasPerroComponent } from './componentes/razas-perro/razas-perro.component';
 import { ProfileComponent } from './componentes/user/profile/profile.component';
+import { ProvinciasComponent } from './componentes/provincias/provincias.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'razas-gatos', component: RazasGatoComponent},
   {path: 'razas-perros', component: RazasPerroComponent},
   {path: 'perfil', component: ProfileComponent},
+  {path: 'provincias', component: ProvinciasComponent},
   {path: '**', component: HomeComponent}
 ];
 

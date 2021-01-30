@@ -27,6 +27,7 @@ import { AnimalService } from 'src/app/servicios/animal.service';
 import { LoginService } from 'src/app/servicios/login.service';
 import { LocalstorageService } from 'src/app/servicios/localstorage.service';
 import { UniquePipe } from './pipes/unique.pipe';
+import { ProvinciasComponent } from './componentes/provincias/provincias.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { UniquePipe } from './pipes/unique.pipe';
     UniquePipe,
     RazasGatoComponent,
     RazasPerroComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProvinciasComponent
   ],
   imports: [
     BrowserModule,

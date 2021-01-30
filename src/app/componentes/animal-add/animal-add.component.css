@@ -3,14 +3,6 @@
     background: #0068621f;
 }
 
-form{
-    padding-left: 40px;
-}
-
-input, textarea, select{
-    width: 90%;
-}
-
 .backButton{
     cursor: pointer;
     margin-left: 40px;

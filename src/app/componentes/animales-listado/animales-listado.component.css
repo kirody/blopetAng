@@ -56,5 +56,33 @@
 
  .backButton{
     cursor: pointer;
-    margin-left: 40px;
+}
+
+.padding {
+    padding: 10px;
+}
+
+.lista {
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.lista img {
+    margin-bottom: 2px;
+}
+
+.masDetalles {
+    font-size: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.fondoMasDetalles {
+    background: linear-gradient(#ffffff00, #efefef);
+    border-radius: .25rem;
+}
+
+.fontSize-10 {
+    font-size: 12px;
+    font-weight: bold;
 }

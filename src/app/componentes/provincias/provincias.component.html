@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div class="col-md-4">
+                <label class="font-weight-bold">Provincia</label>
+                <select [(ngModel)]="opcionSeleccionada" (change)="onClick()">
+                    <option selected value="">--Selecciona una opción</option>
+                    <option *ngFor="let nombre of provincias" >
+                        {{nombre.provincia}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="col-9">
+            <p [hidden]="opcionSeleccionada == '0'">Haz seleccionado la opción # {{ verSeleccion }}</p>
+        </div>
+    </div>
+</div>
